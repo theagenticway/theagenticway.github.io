@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Modern Bolt - Fabric for the stories you'll tell.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F8F7F4;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-bg {
+             background-image: url('https://images.unsplash.com/photo-1593424859859-86b31649942a?q=80&w=2070&auto=format&fit=crop');
+             background-size: cover;
+             background-position: center;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #A0522D; /* Sienna */
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .btn-primary {
+            background-color: #A0522D;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #8B4513; /* SaddleBrown */
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: #A0522D;
+            border: 2px solid #A0522D;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: #A0522D;
+            color: white;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        .product-image {
+            transition: transform 0.4s ease;
+        }
+        img {
+            -webkit-user-drag: none; /* Prevents image dragging in WebKit browsers */
+            user-drag: none;
+            -moz-user-select: none; /* Firefox */
+            -webkit-user-select: none; /* Safari and Chrome */
+            -ms-user-select: none; /* IE10+ */
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- App Container -->
+    <div id="app" class="antialiased">
+        <!-- Header -->
+        <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Mobile Menu Button -->
+                    <div class="lg:hidden">
+                        <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                            <i data-feather="menu" class="h-6 w-6"></i>
+                        </button>
+                    </div>
+                    <!-- Logo -->
+                    <div class="text-center lg:text-left">
+                        <a href="#home" class="text-2xl font-bold text-gray-800 tracking-wider nav-link-logo" data-page="home">The Modern Bolt</a>
+                    </div>
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden lg:flex items-center space-x-8">
+                        <a href="#home" class="nav-link active" data-page="home">Home</a>
+                        <a href="#shop" class="nav-link" data-page="shop">Shop</a>
+                        <a href="#lookbook" class="nav-link" data-page="lookbook">The Lookbook</a>
+                        <a href="#about" class="nav-link" data-page="about">About</a>
+                    </nav>
+                    <!-- Header Icons -->
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-gray-800"><i data-feather="search"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800"><i data-feather="user"></i></a>
+                        <a href="#" class="relative text-gray-600 hover:text-gray-800">
+                            <i data-feather="shopping-bag"></i>
+                            <span class="absolute -top-2 -right-2 bg-[#A0522D] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden hidden px-6 pb-4 space-y-2">
+                <a href="#home" class="block py-2 text-gray-700 nav-link" data-page="home">Home</a>
+                <a href="#shop" class="block py-2 text-gray-700 nav-link" data-page="shop">Shop</a>
+                <a href="#lookbook" class="block py-2 text-gray-700 nav-link" data-page="lookbook">The Lookbook</a>
+                <a href="#about" class="block py-2 text-gray-700 nav-link" data-page="about">About</a>
+            </div>
+        </header>
+
+        <!-- Main Content: Dynamically populated by JS -->
+        <main id="main-content">
+            <!-- Content will be loaded here -->
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white">
+            <div class="container mx-auto px-6 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Brand -->
+                    <div>
+                        <h3 class="text-xl font-bold font-serif mb-4">The Modern Bolt</h3>
+                        <p class="text-gray-400">Fabric for the stories you'll tell.</p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="hover:text-gray-300"><i data-feather="instagram"></i></a>
+                            <a href="#" class="hover:text-gray-300"><i data-feather="facebook"></i></a>
+                            <a href="#" class="hover:text-gray-300"><i data-feather="pinterest"></i></a>
+                        </div>
+                    </div>
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Shop</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="#shop" data-page="shop" class="hover:text-white">New Arrivals</a></li>
+                            <li><a href="#shop" data-page="shop" class="hover:text-white">Best Sellers</a></li>
+                            <li><a href="#shop" data-page="shop" class="hover:text-white">Fabric Types</a></li>
+                            <li><a href="#shop" data-page="shop" class="hover:text-white">Sale</a></li>
+                        </ul>
+                    </div>
+                    <!-- About Us -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Information</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="#about" data-page="about" class="hover:text-white">About Us</a></li>
+                            <li><a href="#" class="hover:text-white">Contact</a></li>
+                            <li><a href="#" class="hover:text-white">Shipping & Returns</a></li>
+                            <li><a href="#" class="hover:text-white">FAQs</a></li>
+                        </ul>
+                    </div>
+                    <!-- Newsletter -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Join Our Community</h4>
+                        <p class="text-gray-400 mb-4">Get 10% off your first order & a free digital guide to pairing fabrics.</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email address" class="w-full bg-gray-700 border-gray-600 rounded-l-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#A0522D]">
+                            <button class="btn-primary rounded-r-md px-4 py-2">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+                    <p>&copy; 2025 The Modern Bolt. All Rights Reserved. Coded with ❤️.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Page Templates (Hidden) -->
+    <div id="page-templates" class="hidden">
+        
+        <!-- Home Page Template -->
+        <div id="home-template">
+            <!-- Hero Section -->
+            <section class="hero-bg h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white relative">
+                 <div class="absolute inset-0 bg-black/40"></div>
+                <div class="relative z-10 px-4">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">Fabric for the stories you'll tell.</h1>
+                    <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">Discover curated, high-quality fabrics to bring your creative vision to life.</p>
+                    <a href="#shop" data-page="shop" class="btn-primary px-8 py-4 text-lg rounded-md font-semibold">Shop The Latest Collection</a>
+                </div>
+            </section>
+
+            <!-- Featured Categories -->
+            <section class="py-16 bg-white">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl font-bold mb-2">Find Your Perfect Material</h2>
+                    <p class="text-gray-600 mb-12 max-w-xl mx-auto">From breathable linens to soft, drapey knits, start your next project here.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                        <a href="#shop" data-page="shop" class="group">
+                            <div class="overflow-hidden rounded-lg shadow-md aspect-w-1 aspect-h-1">
+                                <img src="https://images.unsplash.com/photo-1622039662354-7935a8823528?q=80&w=1974&auto=format&fit=crop" alt="Linen fabrics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <h3 class="mt-4 text-xl font-semibold group-hover:text-[#A0522D]">Linens</h3>
+                        </a>
+                        <a href="#shop" data-page="shop" class="group">
+                            <div class="overflow-hidden rounded-lg shadow-md aspect-w-1 aspect-h-1">
+                                <img src="https://images.unsplash.com/photo-1618331557004-9c1a57d39c0c?q=80&w=1964&auto=format&fit=crop" alt="Knit fabrics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <h3 class="mt-4 text-xl font-semibold group-hover:text-[#A0522D]">Knits</h3>
+                        </a>
+                         <a href="#shop" data-page="shop" class="group">
+                            <div class="overflow-hidden rounded-lg shadow-md aspect-w-1 aspect-h-1">
+                                <img src="https://images.unsplash.com/photo-1632734139447-83448c59d57a?q=80&w=1974&auto=format&fit=crop" alt="Cotton fabrics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <h3 class="mt-4 text-xl font-semibold group-hover:text-[#A0522D]">Cottons</h3>
+                        </a>
+                        <a href="#shop" data-page="shop" class="group">
+                            <div class="overflow-hidden rounded-lg shadow-md aspect-w-1 aspect-h-1">
+                                <img src="https://images.unsplash.com/photo-1594922112480-1a7d39de9e2a?q=80&w=1964&auto=format&fit=crop" alt="Silk fabrics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <h3 class="mt-4 text-xl font-semibold group-hover:text-[#A0522D]">Silks</h3>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- As Seen in the Lookbook -->
+            <section class="py-16 bg-F8F7F4">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold text-center mb-12">As Seen In The Lookbook</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="group relative overflow-hidden rounded-lg cursor-pointer" onclick="navigateTo('lookbook')">
+                            <img src="https://images.unsplash.com/photo-1590305632896-1873130d7e63?q=80&w=1964&auto=format&fit=crop" alt="Woman in a summer dress" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300"></div>
+                            <div class="absolute bottom-0 left-0 p-6 text-white">
+                                <h3 class="text-2xl font-bold">The Weekend Dress</h3>
+                                <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2">Made with our Ocean Blue Rayon Challis.</p>
+                                <span class="mt-4 inline-block font-semibold group-hover:underline">Get Inspired &rarr;</span>
+                            </div>
+                        </div>
+                         <div class="group relative overflow-hidden rounded-lg cursor-pointer" onclick="navigateTo('lookbook')">
+                            <img src="https://images.unsplash.com/photo-1622442289138-077b6a1e53e4?q=80&w=1964&auto=format&fit=crop" alt="Close up of linen trousers" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300"></div>
+                            <div class="absolute bottom-0 left-0 p-6 text-white">
+                                <h3 class="text-2xl font-bold">The Perfect Linen Trousers</h3>
+                                <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2">Our best-selling mid-weight linen in Sand.</p>
+                                 <span class="mt-4 inline-block font-semibold group-hover:underline">Get Inspired &rarr;</span>
+                            </div>
+                        </div>
+                         <div class="group relative overflow-hidden rounded-lg cursor-pointer" onclick="navigateTo('lookbook')">
+                            <img src="https://images.unsplash.com/photo-1619712068991-26c8b9d36528?q=80&w=1965&auto=format&fit=crop" alt="Stylish quilted jacket" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300"></div>
+                            <div class="absolute bottom-0 left-0 p-6 text-white">
+                                <h3 class="text-2xl font-bold">The Artisan Quilted Jacket</h3>
+                                <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2">Crafted from our exclusive cotton prints.</p>
+                                 <span class="mt-4 inline-block font-semibold group-hover:underline">Get Inspired &rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Community Gallery -->
+            <section class="py-16 bg-white">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl font-bold mb-2">#ModernBoltMakes</h2>
+                    <p class="text-gray-600 mb-12">See what our creative community is making with our fabrics.</p>
+                     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
+                        <a href="#" class="group block overflow-hidden"><img src="https://images.unsplash.com/photo-1551823649-105d01861a4f?q=80&w=1964&auto=format&fit=crop" alt="Community make 1" class="aspect-square w-full h-full object-cover group-hover:opacity-80 transition-opacity"></a>
+                        <a href="#" class="group block overflow-hidden"><img src="https://images.unsplash.com/photo-1526835767861-1e2478b0d499?q=80&w=1964&auto=format&fit=crop" alt="Community make 2" class="aspect-square w-full h-full object-cover group-hover:opacity-80 transition-opacity"></a>
+                        <a href="#" class="group block overflow-hidden"><img src="https://images.unsplash.com/photo-1506793549247-a736d77a8344?q=80&w=2072&auto=format&fit=crop" alt="Community make 3" class="aspect-square w-full h-full object-cover group-hover:opacity-80 transition-opacity"></a>
+                        <a href="#" class="group block overflow-hidden"><img src="https://images.unsplash.com/photo-1617196019313-2d28509a25b2?q=80&w=1974&auto=format&fit=crop" alt="Community make 4" class="aspect-square w-full h-full object-cover group-hover:opacity-80 transition-opacity"></a>
+                        <a href="#" class="group block overflow-hidden hidden lg:block"><img src="https://images.unsplash.com/photo-1587467744385-9325e412652b?q=80&w=1974&auto=format&fit=crop" alt="Community make 5" class="aspect-square w-full h-full object-cover group-hover:opacity-80 transition-opacity"></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Shop Page Template -->
+        <div id="shop-template">
+             <div class="container mx-auto px-6 py-8">
+                <div class="text-center py-8">
+                    <h1 class="text-4xl font-bold">Shop Our Collection</h1>
+                    <p class="text-gray-600 mt-2">Find the perfect fabric for your next masterpiece.</p>
+                </div>
+                <div class="lg:flex">
+                    <!-- Filters Sidebar -->
+                    <aside class="w-full lg:w-1/4 lg:pr-8 mb-8 lg:mb-0">
+                        <div class="bg-white p-6 rounded-lg shadow-md sticky top-28">
+                            <h3 class="font-bold text-xl mb-4 border-b pb-2">Filter By</h3>
+                            <!-- Category Filter -->
+                            <div class="mb-6">
+                                <h4 class="font-semibold mb-2">Category</h4>
+                                <ul class="space-y-1 text-gray-700">
+                                    <li><a href="#" class="hover:text-[#A0522D] flex justify-between"><span>Apparel</span> <span class="text-gray-400">45</span></a></li>
+                                    <li><a href="#" class="hover:text-[#A0522D] flex justify-between"><span>Quilting</span> <span class="text-gray-400">32</span></a></li>
+                                    <li><a href="#" class="hover:text-[#A0522D] flex justify-between"><span>Home Decor</span> <span class="text-gray-400">18</span></a></li>
+                                    <li><a href="#" class="hover:text-[#A0522D] flex justify-between"><span>Children's</span> <span class="text-gray-400">25</span></a></li>
+                                </ul>
+                            </div>
+                            <!-- Fabric Type Filter -->
+                             <div class="mb-6">
+                                <h4 class="font-semibold mb-2">Fabric Type</h4>
+                                <ul class="space-y-1 text-gray-700">
+                                    <li><a href="#" class="hover:text-[#A0522D]">Linen</a></li>
+                                    <li><a href="#" class="hover:text-[#A0522D]">Cotton</a></li>
+                                    <li><a href="#" class="hover:text-[#A0522D]">Rayon</a></li>
+                                    <li><a href="#" class="hover:text-[#A0522D]">Knit</a></li>
+                                    <li><a href="#" class="hover:text-[#A0522D]">Canvas</a></li>
+                                </ul>
+                            </div>
+                            <!-- Color Filter -->
+                            <div>
+                                <h4 class="font-semibold mb-3">Color</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <button class="h-8 w-8 rounded-full bg-red-500 border-2 border-transparent focus:border-gray-500"></button>
+                                    <button class="h-8 w-8 rounded-full bg-blue-500 border-2 border-transparent focus:border-gray-500"></button>
+                                    <button class="h-8 w-8 rounded-full bg-green-500 border-2 border-transparent focus:border-gray-500"></button>
+                                    <button class="h-8 w-8 rounded-full bg-yellow-400 border-2 border-transparent focus:border-gray-500"></button>
+                                    <button class="h-8 w-8 rounded-full bg-purple-500 border-2 border-transparent focus:border-gray-500"></button>
+                                    <button class="h-8 w-8 rounded-full bg-gray-800 border-2 border-transparent focus:border-gray-500"></button>
+                                    <button class="h-8 w-8 rounded-full bg-white border-2 border-gray-300 focus:border-gray-500"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                    <!-- Products Grid -->
+                    <div class="w-full lg:w-3/4">
+                        <div class="flex justify-between items-center mb-6">
+                            <p class="text-gray-600">Showing 1-12 of 80 results</p>
+                            <select class="border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#A0522D]">
+                                <option>Sort by latest</option>
+                                <option>Sort by price: low to high</option>
+                                <option>Sort by price: high to low</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                            <!-- Product Card 1 -->
+                            <div class="product-card group" onclick="navigateTo('product-detail')">
+                                <div class="overflow-hidden rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1622396639527-3a1e1e1a1a9e?q=80&w=1964&auto=format&fit=crop" alt="Fabric" class="w-full h-full object-cover product-image aspect-[4/5]">
+                                </div>
+                                <h3 class="mt-4 font-semibold text-lg">Sun-Washed Ochre Linen</h3>
+                                <p class="text-gray-500">Mid-weight Linen Blend</p>
+                                <p class="mt-2 font-bold text-[#A0522D]">$18.00 / yard</p>
+                            </div>
+                            <!-- More product cards... -->
+                             <div class="product-card group" onclick="navigateTo('product-detail')">
+                                <div class="overflow-hidden rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1617196018331-a6f240871d3a?q=80&w=1974&auto=format&fit=crop" alt="Fabric" class="w-full h-full object-cover product-image aspect-[4/5]">
+                                </div>
+                                <h3 class="mt-4 font-semibold text-lg">Ocean Blue Rayon Challis</h3>
+                                <p class="text-gray-500">Lightweight Rayon</p>
+                                <p class="mt-2 font-bold text-[#A0522D]">$15.50 / yard</p>
+                            </div>
+                             <div class="product-card group" onclick="navigateTo('product-detail')">
+                                <div class="overflow-hidden rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1632734139447-83448c59d57a?q=80&w=1974&auto=format&fit=crop" alt="Fabric" class="w-full h-full object-cover product-image aspect-[4/5]">
+                                </div>
+                                <h3 class="mt-4 font-semibold text-lg">Forest Green Double Gauze</h3>
+                                <p class="text-gray-500">Organic Cotton</p>
+                                <p class="mt-2 font-bold text-[#A0522D]">$17.00 / yard</p>
+                            </div>
+                             <div class="product-card group" onclick="navigateTo('product-detail')">
+                                <div class="overflow-hidden rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1594922112480-1a7d39de9e2a?q=80&w=1964&auto=format&fit=crop" alt="Fabric" class="w-full h-full object-cover product-image aspect-[4/5]">
+                                </div>
+                                <h3 class="mt-4 font-semibold text-lg">Abstract Floral Cotton Poplin</h3>
+                                <p class="text-gray-500">Ruby Star Society</p>
+                                <p class="mt-2 font-bold text-[#A0522D]">$12.50 / yard</p>
+                            </div>
+                             <div class="product-card group" onclick="navigateTo('product-detail')">
+                                <div class="overflow-hidden rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1596700147424-340665a38162?q=80&w=1974&auto=format&fit=crop" alt="Fabric" class="w-full h-full object-cover product-image aspect-[4/5]">
+                                </div>
+                                <h3 class="mt-4 font-semibold text-lg">Blush Pink Jersey Knit</h3>
+                                <p class="text-gray-500">Cotton/Spandex Blend</p>
+                                <p class="mt-2 font-bold text-[#A0522D]">$14.00 / yard</p>
+                            </div>
+                            <div class="product-card group" onclick="navigateTo('product-detail')">
+                                <div class="overflow-hidden rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1618330926759-74a43400a442?q=80&w=1964&auto=format&fit=crop" alt="Fabric" class="w-full h-full object-cover product-image aspect-[4/5]">
+                                </div>
+                                <h3 class="mt-4 font-semibold text-lg">Heavy Duty Duck Canvas</h3>
+                                <p class="text-gray-500">Natural Untreated</p>
+                                <p class="mt-2 font-bold text-[#A0522D]">$11.00 / yard</p>
+                            </div>
+                        </div>
+                        <!-- Pagination -->
+                        <div class="mt-12 flex justify-center">
+                            <nav class="flex items-center space-x-2">
+                                <a href="#" class="px-4 py-2 bg-white border rounded-md hover:bg-gray-100">Previous</a>
+                                <a href="#" class="px-4 py-2 bg-[#A0522D] text-white border border-[#A0522D] rounded-md">1</a>
+                                <a href="#" class="px-4 py-2 bg-white border rounded-md hover:bg-gray-100">2</a>
+                                <a href="#" class="px-4 py-2 bg-white border rounded-md hover:bg-gray-100">3</a>
+                                <a href="#" class="px-4 py-2 bg-white border rounded-md hover:bg-gray-100">Next</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Product Detail Page Template -->
+        <div id="product-detail-template">
+            <div class="container mx-auto px-6 py-12">
+                <div class="lg:flex">
+                    <!-- Product Images -->
+                    <div class="lg:w-1/2">
+                       <div class="mb-4 rounded-lg bg-gray-200">
+                         <img id="main-product-image" src="https://images.unsplash.com/photo-1622396639527-3a1e1e1a1a9e?q=80&w=1964&auto=format&fit=crop" alt="Main product view" class="w-full h-full object-cover rounded-lg shadow-lg aspect-[4/5]">
+                       </div>
+                       <div class="grid grid-cols-4 gap-4">
+                           <button class="product-thumb-btn border-2 border-[#A0522D] rounded-lg overflow-hidden" data-img-src="https://images.unsplash.com/photo-1622396639527-3a1e1e1a1a9e?q=80&w=1964&auto=format&fit=crop">
+                               <img src="https://images.unsplash.com/photo-1622396639527-3a1e1e1a1a9e?q=80&w=1964&auto=format&fit=crop" alt="Thumbnail 1" class="w-full h-full object-cover aspect-[4/5]">
+                           </button>
+                           <button class="product-thumb-btn border-2 border-transparent rounded-lg overflow-hidden" data-img-src="https://images.unsplash.com/photo-1622227918448-35510526e9a6?q=80&w=1964&auto=format&fit=crop">
+                               <img src="https://images.unsplash.com/photo-1622227918448-35510526e9a6?q=80&w=1964&auto=format&fit=crop" alt="Thumbnail 2" class="w-full h-full object-cover aspect-[4/5]">
+                           </button>
+                           <button class="product-thumb-btn border-2 border-transparent rounded-lg overflow-hidden" data-img-src="https://images.unsplash.com/photo-1622227918482-1e564a9c6c74?q=80&w=1964&auto=format&fit=crop">
+                               <img src="https://images.unsplash.com/photo-1622227918482-1e564a9c6c74?q=80&w=1964&auto=format&fit=crop" alt="Thumbnail 3" class="w-full h-full object-cover aspect-[4/5]">
+                           </button>
+                           <button class="product-thumb-btn border-2 border-transparent rounded-lg overflow-hidden relative" data-img-src="https://images.unsplash.com/photo-1542159829-535937905186?q=80&w=1974&auto=format&fit=crop">
+                               <img src="https://images.unsplash.com/photo-1542159829-535937905186?q=80&w=1974&auto=format&fit=crop" alt="Thumbnail 4" class="w-full h-full object-cover aspect-[4/5]">
+                               <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                                   <i data-feather="play-circle" class="text-white h-8 w-8"></i>
+                               </div>
+                           </button>
+                       </div>
+                    </div>
+                    <!-- Product Info -->
+                    <div class="lg:w-1/2 lg:pl-12 mt-8 lg:mt-0">
+                        <h1 class="text-3xl lg:text-4xl font-bold mb-2">Sun-Washed Ochre Linen</h1>
+                        <p class="text-2xl font-semibold text-[#A0522D] mb-6">$18.00 / yard</p>
+                        
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg mb-2">The Story</h3>
+                            <p class="text-gray-600 leading-relaxed">This linen blend feels like a warm afternoon. It's breathable with a soft, lived-in texture that only gets better with every wash. The rich ochre hue is incredibly versatile, adding a touch of earthy elegance to any project.</p>
+                            <p class="text-gray-600 leading-relaxed mt-2"><span class="font-semibold">Perfect For:</span> Wide-leg trousers, flowy midi dresses, structured blouses, and artisan throw pillows.</p>
+                        </div>
+                        
+                        <!-- Quantity and Add to Cart -->
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="flex items-center border rounded-md">
+                                <button class="px-3 py-2 text-gray-600 hover:bg-gray-100">-</button>
+                                <input type="text" value="1" class="w-12 text-center border-l border-r focus:outline-none">
+                                <button class="px-3 py-2 text-gray-600 hover:bg-gray-100">+</button>
+                            </div>
+                            <button class="btn-primary w-full py-3 rounded-md font-semibold text-lg">Add to Bag</button>
+                        </div>
+                        
+                        <!-- Accordion for details -->
+                        <div class="space-y-2">
+                             <div class="border rounded-md">
+                                <button class="accordion-header w-full text-left p-4 font-semibold flex justify-between items-center">
+                                    <span>Specifications</span>
+                                    <i data-feather="chevron-down" class="accordion-icon transition-transform"></i>
+                                </button>
+                                <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500">
+                                    <div class="p-4 border-t">
+                                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                            <li>Content: 55% Linen / 45% Rayon</li>
+                                            <li>Width: 54" / 137 cm</li>
+                                            <li>Weight: 5.9 oz / 200 GSM</li>
+                                            <li>Designer: The Modern Bolt Exclusives</li>
+                                            <li>Care: Machine wash cold, tumble dry low.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="border rounded-md">
+                                <button class="accordion-header w-full text-left p-4 font-semibold flex justify-between items-center">
+                                    <span>Shipping & Returns</span>
+                                    <i data-feather="chevron-down" class="accordion-icon transition-transform"></i>
+                                </button>
+                                <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500">
+                                    <div class="p-4 border-t text-gray-600">
+                                        <p>We ship worldwide! Orders are typically processed in 1-2 business days. We accept returns on uncut fabric within 30 days of purchase. See our full policy for details.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lookbook Page Template -->
+        <div id="lookbook-template">
+            <div class="container mx-auto px-6 py-12">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-bold">The Lookbook</h1>
+                    <p class="text-gray-600 mt-2 text-lg">Your source for project ideas, tutorials, and fabric inspiration.</p>
+                </div>
+                <!-- Inspiration Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Lookbook Card 1 -->
+                    <div class="group bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1590305632896-1873130d7e63?q=80&w=1964&auto=format&fit=crop" alt="Summer dress project" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105 aspect-[4/3]">
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">PROJECT SPOTLIGHT</p>
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-[#A0522D]">The Perfect Weekend Dress</h3>
+                            <p class="text-gray-600 mb-4">See how we used our airy Ocean Blue Rayon Challis to create a dress that's perfect for any summer occasion.</p>
+                            <a href="#" class="font-semibold text-[#A0522D] hover:underline">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Lookbook Card 2 -->
+                     <div class="group bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1622227918482-1e564a9c6c74?q=80&w=1964&auto=format&fit=crop" alt="Guide to linen" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105 aspect-[4/3]">
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">FABRIC GUIDE</p>
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-[#A0522D]">A Sewist's Guide to Linen</h3>
+                            <p class="text-gray-600 mb-4">Everything you need to know about choosing, sewing, and caring for this timeless, versatile fabric.</p>
+                            <a href="#" class="font-semibold text-[#A0522D] hover:underline">Read More &rarr;</a>
+                        </div>
+                    </div>
+                     <!-- Lookbook Card 3 -->
+                     <div class="group bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1587467744385-9325e412652b?q=80&w=1974&auto=format&fit=crop" alt="Color trends" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105 aspect-[4/3]">
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">TREND REPORT</p>
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-[#A0522D]">Autumn 2025 Color Trends</h3>
+                            <p class="text-gray-600 mb-4">Get inspired by the rich, earthy tones of the upcoming season. We're loving terracotta, moss green, and deep navy.</p>
+                            <a href="#" class="font-semibold text-[#A0522D] hover:underline">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- More cards... -->
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page Template -->
+        <div id="about-template">
+            <div class="bg-white">
+                <div class="container mx-auto px-6 py-16">
+                     <div class="lg:flex items-center">
+                        <div class="lg:w-1/2 lg:pr-12">
+                             <h1 class="text-4xl md:text-5xl font-bold mb-4">We believe fabric is more than just material.</h1>
+                             <p class="text-lg text-gray-600 leading-relaxed mb-6">It’s the beginning of a story. A story about a dress worn on a perfect summer day, a quilt that becomes a family heirloom, or a set of pillows that finally make a house feel like a home.</p>
+                             <p class="text-gray-600 leading-relaxed mb-6">The Modern Bolt was founded in 2025 with a simple mission: to provide makers with a curated selection of contemporary, high-quality fabrics that inspire creativity and stand the test of time. We meticulously source our textiles from designers and mills who share our passion for quality and design.</p>
+                             <a href="#shop" data-page="shop" class="btn-secondary px-8 py-3 rounded-md font-semibold">Explore Our Fabrics</a>
+                        </div>
+                        <div class="lg:w-1/2 mt-8 lg:mt-0">
+                            <img src="https://images.unsplash.com/photo-1556912173-353c23605755?q=80&w=2070&auto=format&fit=crop" alt="The Modern Bolt studio" class="rounded-lg shadow-xl w-full h-full object-cover">
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Feather Icons ---
+            feather.replace();
+
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- SPA Navigation ---
+            const mainContent = document.getElementById('main-content');
+            const pageTemplates = document.getElementById('page-templates');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const logoLink = document.querySelector('.nav-link-logo');
+
+            const pages = {
+                home: pageTemplates.querySelector('#home-template').innerHTML,
+                shop: pageTemplates.querySelector('#shop-template').innerHTML,
+                'product-detail': pageTemplates.querySelector('#product-detail-template').innerHTML,
+                lookbook: pageTemplates.querySelector('#lookbook-template').innerHTML,
+                about: pageTemplates.querySelector('#about-template').innerHTML,
+            };
+
+            const navigateTo = (page) => {
+                // Hide mobile menu on navigation
+                mobileMenu.classList.add('hidden');
+                
+                // Load page content
+                mainContent.innerHTML = pages[page];
+                window.scrollTo(0, 0);
+                
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.page === page);
+                });
+                
+                // Update URL hash
+                window.location.hash = page;
+
+                // Re-initialize dynamic elements for the new page
+                feather.replace();
+                initializePageScripts(page);
+            };
+            
+            // Expose navigateTo to global scope for inline onclicks
+            window.navigateTo = navigateTo;
+
+            // --- Event Listeners for Navigation ---
+            document.body.addEventListener('click', e => {
+                const targetLink = e.target.closest('[data-page]');
+                if (targetLink) {
+                    e.preventDefault();
+                    navigateTo(targetLink.dataset.page);
+                }
+            });
+
+            // --- Initial Page Load ---
+            const initialPage = window.location.hash.substring(1) || 'home';
+            navigateTo(initialPage);
+
+            // --- Page-specific Scripts ---
+            function initializePageScripts(page) {
+                if (page === 'product-detail') {
+                    // Product Image Gallery Logic
+                    const mainImage = document.getElementById('main-product-image');
+                    const thumbButtons = document.querySelectorAll('.product-thumb-btn');
+                    thumbButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            mainImage.src = button.dataset.imgSrc;
+                            thumbButtons.forEach(btn => btn.classList.remove('border-[#A0522D]'));
+                            thumbButtons.forEach(btn => btn.classList.add('border-transparent'));
+                            button.classList.add('border-[#A0522D]');
+                            button.classList.remove('border-transparent');
+                        });
+                    });
+
+                    // Accordion Logic
+                    const accordionHeaders = document.querySelectorAll('.accordion-header');
+                    accordionHeaders.forEach(header => {
+                        header.addEventListener('click', () => {
+                            const content = header.nextElementSibling;
+                            const icon = header.querySelector('.accordion-icon');
+                            
+                            if(content.style.maxHeight) {
+                                content.style.maxHeight = null;
+                                icon.style.transform = 'rotate(0deg)';
+                            } else {
+                                // Close other accordions
+                                document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
+                                document.querySelectorAll('.accordion-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+                                
+                                content.style.maxHeight = content.scrollHeight + "px";
+                                icon.style.transform = 'rotate(180deg)';
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
