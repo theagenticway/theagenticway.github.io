@@ -52,6 +52,87 @@
             .chart-container {
                 height: 350px;
             }
+        .nav-link {
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .nav-link:hover {
+            color: #0D9488; /* Deep Teal Hover */
+            transform: scale(1.05);
+        }
+        .active-nav { /* This class is not currently used in nav links but defined */
+            color: #0D9488; /* Deep Teal */
+            font-weight: 700;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0.75rem; 
+            background-color: #FFFFFF;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+        .filter-btn.active {
+            background-color: #0D9488; /* Deep Teal */
+            color: #FFFFFF;
+            box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+        }
+        .filter-btn:not(.active):hover {
+            background-color: #CCFBF1; /* Light Teal for hover on inactive */
+            color: #0F766E;
+        }
+        .details-content {
+            display: none;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 0;
+        }
+        .details-content.show {
+            display: block;
+            opacity: 1;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #2563EB 0%, #0D9488 100%); /* Electric Blue to Deep Teal */
+        }
+        .section-title {
+            color: #1F2937; /* Dark Gray for section titles */
+            font-weight: 800;
+        }
+        .service-card-title {
+            color: #2563EB; /* Electric Blue */
+            font-weight: 700;
+        }
+        .service-card-bullet {
+            color: #0D9488; /* Deep Teal */
+        }
+        #mobile-menu-button span { display: block; width: 22px; height: 3px; background-color: #2563EB; margin-bottom: 5px; transition: all 0.3s; border-radius: 1px;}
+        #mobile-menu-button.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        #mobile-menu-button.open span:nth-child(2) { opacity: 0; }
+        #mobile-menu-button.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .cta-button-primary {
+            background-color: #2563EB; /* Electric Blue */
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button-primary:hover {
+            background-color: #1D4ED8; /* Darker Electric Blue */
+            transform: scale(1.03);
+        }
+         .cta-button-secondary {
+            background-color: #0D9488; /* Deep Teal */
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .cta-button-secondary:hover {
+            background-color: #0F766E; /* Darker Deep Teal */
+            transform: scale(1.03);
+        }    
         }
     </style>
 </head>
