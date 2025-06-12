@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI in Value-Based Care: An Interactive Report</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore how Agentic AI transforms Value-Based Care: enhancing patient outcomes, boosting provider revenue, and reducing healthcare costs. An interactive report on the future of autonomous healthcare.">
+    <meta name="keywords" content="Agentic AI, Value-Based Care, VBC, healthcare transformation, patient outcomes, provider revenue, cost reduction, AI in healthcare, autonomous AI, digital health">
+    <meta name="author" content="Interactive Health Insights">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="[YOUR_CANONICAL_URL_HERE]"> <!-- Replace with actual URL -->
+    <meta property="og:title" content="Agentic AI in Value-Based Care: An Interactive Report">
+    <meta property="og:description" content="Explore how Agentic AI transforms Value-Based Care: enhancing patient outcomes, boosting provider revenue, and reducing healthcare costs. An interactive report on the future of autonomous healthcare.">
+    <meta property="og:image" content="https://placehold.co/1200x630/c7d2fe/334155?text=Agentic+AI+VBC"> <!-- Placeholder image for social sharing -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="[YOUR_CANONICAL_URL_HERE]"> <!-- Replace with actual URL -->
+    <meta property="twitter:title" content="Agentic AI in Value-Based Care: An Interactive Report">
+    <meta property="twitter:description" content="Explore how Agentic AI transforms Value-Based Care: enhancing patient outcomes, boosting provider revenue, and reducing healthcare costs. An interactive report on the future of autonomous healthcare.">
+    <meta property="twitter:image" content="https://placehold.co/1200x675/c7d2fe/334155?text=Agentic+AI+VBC"> <!-- Placeholder image for social sharing -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Serene Health Tech -->
+    <!-- Application Structure Plan: A thematic, "scrollytelling" single-page app. The flow is: 1. Hero section for introduction. 2. Foundational concepts (VBC & Agentic AI). 3. A core interactive section with tabs for the three pillars of transformation (Outcomes, Revenue, Cost), featuring charts and KPIs. 4. An animated "Impact Dashboard" summarizing key metrics. 5. A visual process flow to explain "how it works". 6. An accordion for challenges. 7. A concluding summary. This structure transforms the report into an exploratory narrative, guiding the user from the "what" to the "why" and "how," which is more engaging and digestible than a linear document. -->
+    <!-- Visualization & Content Choices: 1. Core Concepts: Side-by-side cards (HTML/CSS) for easy comparison. 2. Three Pillars: Tabbed interface (JS) to organize content, with Bar Charts (Chart.js) to compare percentage-based improvements. 3. Key Stats: Animated number counters (JS) for high-impact financial data. 4. AI Process: A visual timeline (HTML/CSS) with scroll-based highlighting (JS) to demystify the abstract process. 5. Challenges: Accordion UI (JS) to present dense text concisely. This mix of static and dynamic elements, powered by vanilla JS and Chart.js, creates an interactive experience tailored to the report's blend of qualitative and quantitative information. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 384px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+        .nav-link.active {
+            color: #0ea5e9;
+            border-bottom-color: #0ea5e9;
+        }
+        .tab-button.active {
+            background-color: #0ea5e9;
+            color: #ffffff;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Mobile menu specific styles */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 50;
+            display: none; /* Hidden by default */
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Off-screen by default */
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 60;
+            padding: 24px;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease-out;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-menu.open {
+            right: 0;
+        }
+        .mobile-menu .close-button {
+            align-self: flex-end;
+            font-size: 2rem;
+            color: #334155;
+            cursor: pointer;
+        }
+        .mobile-menu a {
+            padding: 12px 0;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #334155;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Top Call to Action Button -->
+    <a href="#transformation" class="fixed bottom-4 right-4 bg-sky-600 text-white font-bold py-3 px-6 rounded-full shadow-xl hover:bg-sky-700 transition-all duration-300 transform hover:scale-105 z-50 animate-bounce">
+        Start Exploring Now!
+    </a>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html"><h1 class="text-xl font-bold text-slate-700">The Agentic Way</h1></a>
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#introduction" class="nav-link text-slate-600 hover:text-sky-500 border-b-2 border-transparent pb-1">Introduction</a>
+                <a href="#transformation" class="nav-link text-slate-600 hover:text-sky-500 border-b-2 border-transparent pb-1">Transformation</a>
+                <a href="#impact" class="nav-link text-slate-600 hover:text-sky-500 border-b-2 border-transparent pb-1">Impact</a>
+                <a href="#challenges" class="nav-link text-slate-600 hover:text-sky-500 border-b-2 border-transparent pb-1">Challenges</a>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="md:hidden text-slate-600 focus:outline-none text-2xl">
+                &#9776; <!-- Hamburger icon -->
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay and Content -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+        <div id="mobile-menu" class="mobile-menu">
+            <button class="close-button">&times;</button>
+            <a href="#introduction" class="mobile-nav-link">Introduction</a>
+            <a href="#transformation" class="mobile-nav-link">Transformation</a>
+            <a href="#impact" class="mobile-nav-link">Impact</a>
+            <a href="#challenges" class="mobile-nav-link">Challenges</a>
+        </div>
+    </div>
+
+
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-white">
+            <div class="container mx-auto px-6 py-20 md:py-32 text-center">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-800 leading-tight">The Autonomous Revolution in Healthcare</h2>
+                <p class="mt-4 text-lg md:text-xl text-slate-500 max-w-3xl mx-auto">Exploring how Agentic AI is reshaping Value-Based Care to enhance outcomes, drive revenue, and reduce costs.</p>
+                <!-- Enhanced Call to Action -->
+                <a href="#transformation" class="mt-8 inline-block bg-sky-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-sky-600 transition-all duration-300 transform hover:scale-105 animate-pulse">
+                    Accelerate Your Understanding
+                </a>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section id="introduction" class="py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-800">The Synergy of Two Revolutions</h3>
+                    <p class="mt-3 text-lg text-slate-500 max-w-2xl mx-auto">To understand the future, we must first understand the two powerful forces shaping it: Value-Based Care and Agentic AI.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                    <div class="bg-white p-8 rounded-xl shadow-md border border-slate-200/80 fade-in">
+                        <h4 class="text-2xl font-bold text-slate-700">Value-Based Care (VBC)</h4>
+                        <p class="mt-4 text-slate-600">A healthcare model that shifts focus from the quantity of services to the quality of outcomes. Providers are incentivized based on patient health results and cost-effectiveness, promoting integrated, proactive, and whole-person care.</p>
+                        <ul class="mt-4 space-y-2 text-slate-600">
+                            <li class="flex items-start"><span class="text-sky-500 font-bold mr-2">✓</span><span>Rewards quality over volume</span></li>
+                            <li class="flex items-start"><span class="text-sky-500 font-bold mr-2">✓</span><span>Improves patient outcomes & health equity</span></li>
+                            <li class="flex items-start"><span class="text-sky-500 font-bold mr-2">✓</span><span>Aims to reduce overall healthcare costs</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md border border-slate-200/80 fade-in">
+                        <h4 class="text-2xl font-bold text-slate-700">Agentic AI</h4>
+                        <p class="mt-4 text-slate-600">An advanced form of AI where autonomous 'agents' can reason, learn, and execute complex, multi-step tasks to achieve goals with minimal human input. They are proactive, adaptive, and collaborative.</p>
+                         <ul class="mt-4 space-y-2 text-slate-600">
+                            <li class="flex items-start"><span class="text-sky-500 font-bold mr-2">✓</span><span>Acts autonomously to achieve goals</span></li>
+                            <li class="flex items-start"><span class="text-sky-500 font-bold mr-2">✓</span><span>Orchestrates workflows across systems</span></li>
+                            <li class="flex items-start"><span class="text-sky-500 font-bold mr-2">✓</span><span>Continuously learns and adapts</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three Pillars of Transformation -->
+        <section id="transformation" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-800">The Three Pillars of Transformation</h3>
+                    <p class="mt-3 text-lg text-slate-500 max-w-2xl mx-auto">Agentic AI delivers value across three critical areas of healthcare. Explore each pillar to see how it drives tangible results.</p>
+                </div>
+                
+                <div class="flex justify-center mb-8">
+                    <div id="tabs-container" class="flex space-x-2 bg-slate-200 p-1 rounded-full">
+                        <button data-tab="outcomes" class="tab-button w-full md:w-auto px-6 py-2 text-sm font-semibold rounded-full transition-colors duration-300">Better Outcomes</button>
+                        <button data-tab="revenue" class="tab-button w-full md:w-auto px-6 py-2 text-sm font-semibold rounded-full transition-colors duration-300">Higher Revenue</button>
+                        <button data-tab="costs" class="tab-button w-full md:w-auto px-6 py-2 text-sm font-semibold rounded-full transition-colors duration-300">Lower Costs</button>
+                    </div>
+                </div>
+
+                <div id="tab-content" class="mt-8">
+                    <!-- Outcomes Content -->
+                    <div id="outcomes-content" class="tab-panel fade-in">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-slate-700">Accelerating Care Outcomes</h4>
+                                <p class="mt-3 text-slate-600">By enabling precision diagnostics, personalized treatments, and proactive monitoring, Agentic AI directly improves patient health. It shifts the paradigm from reactive sickness care to proactive wellness management.</p>
+                                <ul class="mt-4 space-y-3 text-slate-600">
+                                    <li class="flex items-start"><span class="mt-1 w-5 h-5 flex-shrink-0 rounded-full bg-teal-400 mr-3"></span><span><strong>Precision Medicine:</strong> AI-personalized cancer treatments improved survival rates by 20%.</span></li>
+                                    <li class="flex items-start"><span class="mt-1 w-5 h-5 flex-shrink-0 rounded-full bg-teal-400 mr-3"></span><span><strong>Proactive Monitoring:</strong> Remote tracking with AI reduced ER visits by 53% and hospital readmissions by 41%.</span></li>
+                                    <li class="flex items-start"><span class="mt-1 w-5 h-5 flex-shrink-0 rounded-full bg-teal-400 mr-3"></span><span><strong>Patient Adherence:</strong> AI-driven reminders and support improve compliance and treatment efficacy.</span></li>
+                                </ul>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="outcomesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Revenue Content -->
+                    <div id="revenue-content" class="tab-panel hidden fade-in">
+                         <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-slate-700">Driving Provider Revenue</h4>
+                                <p class="mt-3 text-slate-600">Agentic AI optimizes operations, streamlines administrative tasks, and ensures accurate value capture, directly boosting the financial health of healthcare providers in a VBC model.</p>
+                                <ul class="mt-4 space-y-3 text-slate-600">
+                                     <li class="flex items-start"><span class="mt-1 w-5 h-5 flex-shrink-0 rounded-full bg-sky-400 mr-3"></span><span><strong>Admin Automation:</strong> Reduces administrative workload by 30%, freeing up clinicians for patient care.</span></li>
+                                     <li class="flex items-start"><span class="mt-1 w-5 h-5 flex-shrink-0 rounded-full bg-sky-400 mr-3"></span><span><strong>Revenue Cycle:</strong> Improves revenue cycle efficiency by 25% through automated billing and claims processing.</span></li>
+                                     <li class="flex items-start"><span class="mt-1 w-5 h-5 flex-shrink-0 rounded-full bg-sky-400 mr-3"></span><span><strong>Resource Optimization:</strong> Predictive staffing can lower labor costs by 12-18% without impacting care quality.</span></li>
+                                </ul>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Costs Content -->
+                    <div id="costs-content" class="tab-panel hidden fade-in">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h4 class="text-2xl font-bold text-slate-700">Reducing Overall Cost of Care</h4>
+                                <p class="mt-3 text-slate-600">A primary goal of VBC is sustainability. Agentic AI achieves this by preventing expensive complications, minimizing administrative waste, and optimizing the use of resources across the healthcare system.</p>
+                                <ul class="mt-4 space-y-3 text-slate-600">
+                                    <li class="flex items-start"><span class="mt-1 w-5 h-5 flex-shrink-0 rounded-full bg-amber-400 mr-3"></span><span><strong>Preventing Complications:</strong> Saves an estimated $3,200-$4,700 per high-risk patient annually.</span></li>
+                                    <li class="flex items-start"><span class="mt-1 w-5 h-5 flex-shrink-0 rounded-full bg-amber-400 mr-3"></span><span><strong>Reduced Readmissions:</strong> Proactive monitoring cuts costly hospital readmissions by 41%.</span></li>
+                                    <li class="flex items-start"><span class="mt-1 w-5 h-5 flex-shrink-0 rounded-full bg-amber-400 mr-3"></span><span><strong>Minimizing Waste:</strong> Automating up to 70% of financial tasks reduces errors and fraud.</span></li>
+                                </ul>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="costsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Dashboard -->
+        <section id="impact" class="py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-800">Quantifiable Impact Dashboard</h3>
+                    <p class="mt-3 text-lg text-slate-500 max-w-2xl mx-auto">Agentic AI delivers measurable improvements. The data below highlights some of the most significant gains reported across the healthcare system.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200/80 fade-in">
+                        <p class="text-4xl md:text-5xl font-extrabold text-teal-500" data-counter-target="53">0%</p>
+                        <p class="mt-2 text-sm font-semibold text-slate-500">Reduction in ER Visits</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200/80 fade-in">
+                        <p class="text-4xl md:text-5xl font-extrabold text-teal-500" data-counter-target="41">0%</p>
+                        <p class="mt-2 text-sm font-semibold text-slate-500">Reduction in Readmissions</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200/80 fade-in">
+                        <p class="text-4xl md:text-5xl font-extrabold text-sky-500" data-counter-target="30">0%</p>
+                        <p class="mt-2 text-sm font-semibold text-slate-500">Reduction in Admin Work</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200/80 fade-in">
+                        <p class="text-4xl md:text-5xl font-extrabold text-amber-500" data-counter-target="4700" data-prefix="$">0</p>
+                        <p class="mt-2 text-sm font-semibold text-slate-500">Annual Savings Per Patient</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI in Action: Process Flow -->
+        <section class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-800">Agentic AI in Action</h3>
+                    <p class="mt-3 text-lg text-slate-500 max-w-2xl mx-auto">This is how an autonomous agent might work to manage a chronic patient's care, orchestrating tasks to prevent a health crisis.</p>
+                </div>
+                <div class="w-full max-w-5xl mx-auto">
+                    <div class="relative grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <!-- Connecting line -->
+                        <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-sky-300 transform -translate-y-4"></div>
+                        
+                        <div class="fade-in text-center relative p-4">
+                            <div class="relative z-10">
+                                <div class="mx-auto w-16 h-16 rounded-full bg-sky-500 flex items-center justify-center text-white text-2xl font-bold mb-4 border-4 border-white shadow-lg">1</div>
+                                <h4 class="font-bold text-slate-700">Monitor</h4>
+                                <p class="text-sm text-slate-500 mt-1">AI agent continuously analyzes data from a patient's wearable device (e.g., heart rate, glucose).</p>
+                            </div>
+                        </div>
+                        <div class="fade-in text-center relative p-4">
+                            <div class="relative z-10">
+                                <div class="mx-auto w-16 h-16 rounded-full bg-sky-500 flex items-center justify-center text-white text-2xl font-bold mb-4 border-4 border-white shadow-lg">2</div>
+                                <h4 class="font-bold text-slate-700">Detect & Reason</h4>
+                                <p class="text-sm text-slate-500 mt-1">The agent detects an anomaly—a pattern indicating a potential issue. It reasons that this requires intervention.</p>
+                            </div>
+                        </div>
+                        <div class="fade-in text-center relative p-4">
+                            <div class="relative z-10">
+                                <div class="mx-auto w-16 h-16 rounded-full bg-sky-500 flex items-center justify-center text-white text-2xl font-bold mb-4 border-4 border-white shadow-lg">3</div>
+                                <h4 class="font-bold text-slate-700">Orchestrate Action</h4>
+                                <p class="text-sm text-slate-500 mt-1">It alerts the care team, schedules a telehealth visit, and sends the patient personalized educational material—all autonomously.</p>
+                            </div>
+                        </div>
+                        <div class="fade-in text-center relative p-4">
+                            <div class="relative z-10">
+                                <div class="mx-auto w-16 h-16 rounded-full bg-sky-500 flex items-center justify-center text-white text-2xl font-bold mb-4 border-4 border-white shadow-lg">4</div>
+                                <h4 class="font-bold text-slate-700">Learn & Adapt</h4>
+                                <p class="text-sm text-slate-500 mt-1">The agent records the outcome and learns from it, refining its future detection models for this patient and others.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges Section -->
+        <section id="challenges" class="py-20 md:py-28">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-800">Navigating the Challenges Ahead</h3>
+                    <p class="mt-3 text-lg text-slate-500 max-w-2xl mx-auto">Widespread adoption requires careful consideration of ethical, regulatory, and practical hurdles. A responsible approach is key to success.</p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4" id="accordion-container">
+                    <div class="accordion-item bg-white rounded-lg shadow-sm border border-slate-200/80 fade-in">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-5 font-semibold text-slate-700">
+                            <span>Ethical Implications</span>
+                            <span class="accordion-icon transform transition-transform duration-300 text-sky-500 text-2xl">+</span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-max-height duration-500 ease-in-out">
+                            <p class="p-5 pt-0 text-slate-600">Ensuring transparency in AI decision-making, establishing clear accountability, protecting patient data privacy, and mitigating algorithmic bias are paramount. A human-centered design philosophy must guide development to augment, not replace, clinical judgment.</p>
+                        </div>
+                    </div>
+                     <div class="accordion-item bg-white rounded-lg shadow-sm border border-slate-200/80 fade-in">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-5 font-semibold text-slate-700">
+                            <span>Regulatory Landscape</span>
+                             <span class="accordion-icon transform transition-transform duration-300 text-sky-500 text-2xl">+</span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-max-height duration-500 ease-in-out">
+                            <p class="p-5 pt-0 text-slate-600">Existing regulations were not designed for autonomous AI. Key challenges include determining legal liability across jurisdictions and defining "meaningful human oversight" for systems designed to act independently. Proactive governance is needed while legal frameworks evolve.</p>
+                        </div>
+                    </div>
+                     <div class="accordion-item bg-white rounded-lg shadow-sm border border-slate-200/80 fade-in">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-5 font-semibold text-slate-700">
+                            <span>Implementation Complexities</span>
+                            <span class="accordion-icon transform transition-transform duration-300 text-sky-500 text-2xl">+</span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-max-height duration-500 ease-in-out">
+                            <p class="p-5 pt-0 text-slate-600">High implementation costs, poor data quality, and fragmented legacy IT systems are significant barriers. Integrating Agentic AI requires a robust data foundation and strategic planning to ensure seamless interoperability and equitable access to its benefits.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h4 class="text-xl font-bold text-white">The Future is Autonomous and Value-Driven</h4>
+            <p class="mt-2 max-w-2xl mx-auto">Agentic AI is a strategic imperative for organizations committed to thriving in the value-based care ecosystem. It is an indispensable partner in building a more sustainable, equitable, and patient-centric healthcare future.</p>
+            <a href="#transformation" class="mt-6 inline-block bg-sky-700 text-white font-bold py-2 px-6 rounded-full hover:bg-sky-800 transition-colors duration-300">
+                Explore the Benefits
+            </a>
+            <p class="mt-6 text-sm">&copy; 2025 Interactive Health Insights. All rights reserved.</p>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- Data for Charts ---
+    const outcomesData = {
+        labels: ['ER Visit Reduction', 'Readmission Reduction', 'Survival Rate Increase'],
+        values: [53, 41, 20]
+    };
+    const revenueData = {
+        labels: ['Admin Workload Reduction', 'Revenue Cycle Efficiency', 'Staffing Cost Reduction'],
+        values: [30, 25, 18] 
+    };
+    const costsData = {
+        labels: ['Financial Task Automation', 'Readmission Reduction'],
+        values: [70, 41]
+    };
+
+    // --- Chart.js Configuration ---
+    const createChart = (ctx, label, data, backgroundColor, borderColor) => {
+        return new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    label: label,
+                    data: data.values,
+                    backgroundColor: backgroundColor,
+                    borderColor: borderColor,
+                    borderWidth: 1,
+                    borderRadius: 5,
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw}%`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false,
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    },
+                    y: {
+                         grid: {
+                            display: false,
+                        }
+                    }
+                }
+            }
+        });
+    };
+    
+    // --- Intersection Observer for animations ---
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Animate counter if it's a counter element
+                if (entry.target.hasAttribute('data-counter-target')) {
+                    animateCounter(entry.target);
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+
+    // --- Tab Functionality ---
+    const tabsContainer = document.getElementById('tabs-container');
+    const tabButtons = tabsContainer.querySelectorAll('.tab-button');
+    const tabPanels = document.getElementById('tab-content').querySelectorAll('.tab-panel');
+    let outcomesChartInstance, revenueChartInstance, costsChartInstance;
+
+    function switchTab(tabName) {
+        tabPanels.forEach(panel => {
+            if (panel.id === `${tabName}-content`) {
+                panel.classList.remove('hidden');
+                setTimeout(() => panel.classList.add('visible'), 10);
+            } else {
+                panel.classList.add('hidden');
+                panel.classList.remove('visible');
+            }
+        });
+
+        tabButtons.forEach(button => {
+             if (button.dataset.tab === tabName) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+
+        // Initialize charts on tab switch if not already initialized
+        if (tabName === 'outcomes' && !outcomesChartInstance) {
+            const ctx = document.getElementById('outcomesChart').getContext('2d');
+            outcomesChartInstance = createChart(ctx, '% Improvement', outcomesData, 'rgba(45, 212, 191, 0.6)', 'rgba(20, 184, 166, 1)');
+        } else if (tabName === 'revenue' && !revenueChartInstance) {
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            revenueChartInstance = createChart(ctx, '% Improvement', revenueData, 'rgba(56, 189, 248, 0.6)', 'rgba(14, 165, 233, 1)');
+        } else if (tabName === 'costs' && !costsChartInstance) {
+            const ctx = document.getElementById('costsChart').getContext('2d');
+            costsChartInstance = createChart(ctx, '% Impact', costsData, 'rgba(251, 191, 36, 0.6)', 'rgba(245, 158, 11, 1)');
+        }
+    }
+
+    tabsContainer.addEventListener('click', (e) => {
+        if (e.target.matches('.tab-button')) {
+            switchTab(e.target.dataset.tab);
+        }
+    });
+    
+    // Set initial active tab
+    switchTab('outcomes');
+
+
+    // --- Accordion Functionality ---
+    const accordionContainer = document.getElementById('accordion-container');
+    accordionContainer.addEventListener('click', (e) => {
+        const header = e.target.closest('.accordion-header');
+        if (!header) return;
+        
+        const item = header.parentElement;
+        const content = item.querySelector('.accordion-content');
+        const icon = header.querySelector('.accordion-icon');
+        
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+            icon.textContent = '+';
+            icon.classList.remove('rotate-45');
+        } else {
+            // Close other items first
+            item.parentElement.querySelectorAll('.accordion-item').forEach(otherItem => {
+                otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                otherItem.querySelector('.accordion-icon').textContent = '+';
+                otherItem.querySelector('.accordion-icon').classList.remove('rotate-45');
+            });
+            content.style.maxHeight = content.scrollHeight + 'px';
+            icon.textContent = '+';
+            icon.classList.add('rotate-45');
+        }
+    });
+
+    // --- Counter Animation ---
+    function animateCounter(element) {
+        const target = +element.dataset.counterTarget;
+        const prefix = element.dataset.prefix || '';
+        const suffix = element.innerHTML.includes('%') ? '%' : '';
+        element.innerText = '0';
+        
+        let start = 0;
+        const duration = 2000;
+        const stepTime = Math.abs(Math.floor(duration / target));
+
+        const timer = setInterval(() => {
+            start += Math.ceil(target / (duration / stepTime));
+            if (start > target) start = target;
+            element.innerText = prefix + start.toLocaleString() + suffix;
+            if (start === target) {
+                clearInterval(timer);
+            }
+        }, stepTime);
+    }
+    
+    // --- Smooth Scrolling & Nav Highlighting ---
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    function updateActiveLink() {
+        let index = sections.length;
+
+        while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+        
+        navLinks.forEach((link) => link.classList.remove('active'));
+        if(index >= 0) {
+            const activeLink = document.querySelector(`.nav-link[href="#${sections[index].id}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    }
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink();
+
+    // --- Mobile Menu Toggle ---
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileCloseButton = mobileMenu.querySelector('.close-button');
+    const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenuOverlay.style.display = 'block'; // Show overlay
+        setTimeout(() => mobileMenu.classList.add('open'), 10); // Animate menu in
+    });
+
+    mobileCloseButton.addEventListener('click', () => {
+        mobileMenu.classList.remove('open'); // Animate menu out
+        setTimeout(() => mobileMenuOverlay.style.display = 'none', 300); // Hide overlay after transition
+    });
+
+    mobileMenuOverlay.addEventListener('click', (e) => {
+        if (e.target === mobileMenuOverlay) { // Only close if click is on overlay, not menu itself
+            mobileMenu.classList.remove('open');
+            setTimeout(() => mobileMenuOverlay.style.display = 'none', 300);
+        }
+    });
+
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            setTimeout(() => mobileMenuOverlay.style.display = 'none', 300);
+        });
+    });
+
+});
+</script>
+
+</body>
+</html>
