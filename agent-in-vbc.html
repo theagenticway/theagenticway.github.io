@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agentic AI in Value-Based Care: An Interactive Report</title>
+    <title>The Agentic Way: Agentic AI in Value-Based Care</title>
     <!-- SEO Meta Tags -->
     <meta name="description" content="Explore how Agentic AI transforms Value-Based Care: enhancing patient outcomes, boosting provider revenue, and reducing healthcare costs. An interactive report on the future of autonomous healthcare.">
     <meta name="keywords" content="Agentic AI, Value-Based Care, VBC, healthcare transformation, patient outcomes, provider revenue, cost reduction, AI in healthcare, autonomous AI, digital health">
@@ -12,14 +12,14 @@
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="[YOUR_CANONICAL_URL_HERE]"> <!-- Replace with actual URL -->
-    <meta property="og:title" content="Agentic AI in Value-Based Care: An Interactive Report">
+    <meta property="og:title" content="The Agentic Way: Agentic AI in Value-Based Care">
     <meta property="og:description" content="Explore how Agentic AI transforms Value-Based Care: enhancing patient outcomes, boosting provider revenue, and reducing healthcare costs. An interactive report on the future of autonomous healthcare.">
     <meta property="og:image" content="https://placehold.co/1200x630/c7d2fe/334155?text=Agentic+AI+VBC"> <!-- Placeholder image for social sharing -->
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="[YOUR_CANONICAL_URL_HERE]"> <!-- Replace with actual URL -->
-    <meta property="twitter:title" content="Agentic AI in Value-Based Care: An Interactive Report">
+    <meta property="twitter:title" content="The Agentic Way: Agentic AI in Value-Based Care">
     <meta property="twitter:description" content="Explore how Agentic AI transforms Value-Based Care: enhancing patient outcomes, boosting provider revenue, and reducing healthcare costs. An interactive report on the future of autonomous healthcare.">
     <meta property="twitter:image" content="https://placehold.co/1200x675/c7d2fe/334155?text=Agentic+AI+VBC"> <!-- Placeholder image for social sharing -->
 
@@ -121,15 +121,16 @@
 </head>
 <body class="bg-slate-50">
 
-    <!-- Top Call to Action Button -->
-    <a href="#transformation" class="fixed bottom-4 right-4 bg-sky-600 text-white font-bold py-3 px-6 rounded-full shadow-xl hover:bg-sky-700 transition-all duration-300 transform hover:scale-105 z-50 animate-bounce">
-        Start Exploring Now!
+    <!-- Top Call to Action Button (fixed at bottom right) -->
+    <a href="mailto:rahul7283@gmail.com" class="fixed bottom-4 right-4 bg-sky-600 text-white font-bold py-3 px-6 rounded-full shadow-xl hover:bg-sky-700 transition-all duration-300 transform hover:scale-105 z-50 animate-bounce">
+        Contact Us Now!
     </a>
 
     <!-- Header & Navigation -->
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html"><h1 class="text-xl font-bold text-slate-700">The Agentic Way</h1></a>
+            <!-- Link to Home Page and New Name -->
+            <a href="index.html" class="text-xl font-bold text-slate-700 hover:text-sky-500 transition-colors duration-200">The Agentic Way</a>
             <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-8">
                 <a href="#introduction" class="nav-link text-slate-600 hover:text-sky-500 border-b-2 border-transparent pb-1">Introduction</a>
@@ -162,8 +163,8 @@
             <div class="container mx-auto px-6 py-20 md:py-32 text-center">
                 <h2 class="text-4xl md:text-6xl font-extrabold text-slate-800 leading-tight">The Autonomous Revolution in Healthcare</h2>
                 <p class="mt-4 text-lg md:text-xl text-slate-500 max-w-3xl mx-auto">Exploring how Agentic AI is reshaping Value-Based Care to enhance outcomes, drive revenue, and reduce costs.</p>
-                <!-- Enhanced Call to Action -->
-                <a href="#transformation" class="mt-8 inline-block bg-sky-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-sky-600 transition-all duration-300 transform hover:scale-105 animate-pulse">
+                <!-- Hero Section Call to Action -->
+                <a href="mailto:rahul7283@gmail.com" class="mt-8 inline-block bg-sky-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-sky-600 transition-all duration-300 transform hover:scale-105 animate-pulse">
                     Accelerate Your Understanding
                 </a>
             </div>
@@ -389,8 +390,8 @@
         <div class="container mx-auto px-6 text-center">
             <h4 class="text-xl font-bold text-white">The Future is Autonomous and Value-Driven</h4>
             <p class="mt-2 max-w-2xl mx-auto">Agentic AI is a strategic imperative for organizations committed to thriving in the value-based care ecosystem. It is an indispensable partner in building a more sustainable, equitable, and patient-centric healthcare future.</p>
-            <a href="#transformation" class="mt-6 inline-block bg-sky-700 text-white font-bold py-2 px-6 rounded-full hover:bg-sky-800 transition-colors duration-300">
-                Explore the Benefits
+            <a href="mailto:rahul7283@gmail.com" class="mt-6 inline-block bg-sky-700 text-white font-bold py-2 px-6 rounded-full hover:bg-sky-800 transition-colors duration-300">
+                Connect with Us
             </a>
             <p class="mt-6 text-sm">&copy; 2025 Interactive Health Insights. All rights reserved.</p>
         </div>
@@ -399,6 +400,13 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- Initialize counters to 0 on load before any animation triggers ---
+    document.querySelectorAll('[data-counter-target]').forEach(el => {
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.innerHTML.includes('%') ? '%' : '';
+        el.innerText = prefix + '0' + suffix;
+    });
+
     // --- Data for Charts ---
     const outcomesData = {
         labels: ['ER Visit Reduction', 'Readmission Reduction', 'Survival Rate Increase'],
