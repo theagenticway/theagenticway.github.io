@@ -531,18 +531,26 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+       document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenuButton.classList.toggle('open');
-                const isExpanded = mobileMenuButton.classList.contains('open');
-                mobileMenuButton.setAttribute('aria-expanded', isExpanded.toString());
-            });
-   
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open'); // Toggle 'open' class
+        mobileMenuButton.classList.toggle('open');
+        const isExpanded = mobileMenuButton.classList.contains('open');
+        mobileMenuButton.setAttribute('aria-expanded', isExpanded.toString());
+    });
+
+    // Optional: Close menu when a link inside it is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            mobileMenuButton.classList.remove('open');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
         });
+    });
+});
     </script>
 </body>
 </html>
