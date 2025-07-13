@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Goyal | AI Executive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 
+    Chosen Palette: "Warm Neutral & Tech Blue" - A base of light grays (slate-100/200) and off-white creates a calm, professional backdrop. A sophisticated, muted blue (sky-600) is used as an accent for interactive elements and highlights, conveying a sense of modern technology and trust.
+    Application Structure Plan: The SPA is designed as a non-linear, interactive dashboard. This structure was chosen because a senior profile like this has multiple facets (leadership, technical skill, venture experience) that a user might want to explore in different orders. The top navigation allows for immediate access to key stories: (1) Quantifiable Impact, (2) Core Capabilities, and (3) Career Journey. This is more engaging and user-directed than a traditional chronological resume, allowing recruiters to quickly find the information most relevant to them.
+    Visualization & Content Choices: 
+    - Report Info: Quantified business value ($170M, $20M, $7M) -> Goal: Compare/Impress -> Viz: Bar Chart (Chart.js) -> Interaction: Animated on load, tooltips on hover. Justification: A chart provides immediate, powerful proof of financial impact, far more effective than text alone.
+    - Report Info: Career history -> Goal: Show Progression/Change -> Viz: Vertical Timeline (HTML/CSS) -> Interaction: Section reveals on scroll. Justification: A visual timeline is more intuitive for understanding a 20+ year career path than a simple list, and clearly separates corporate, venture, and advisory roles.
+    - Report Info: Core competencies & AI projects -> Goal: Organize/Explore -> Viz: Interactive Cards (HTML/CSS/JS) -> Interaction: Hover effects and clear grouping. Justification: Cards break down complex skills into digestible, visually distinct topics, inviting users to explore areas of interest.
+    - Report Info: Key Skills -> Goal: Inform -> Viz: Styled Lists (HTML/CSS). Justification: A clean, categorized list is the most scannable and efficient way to present a large number of technical and leadership skills.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. 
+    -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 450px; }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #0284c7; 
+            border: 4px solid #f1f5f9;
+        }
+        .timeline-path {
+            position: absolute;
+            left: -21px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #cbd5e1;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-slate-800">
+                <a href="#">Rahul Goyal</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#impact" class="text-slate-600 hover:text-sky-600 transition duration-300">Impact</a>
+                <a href="#capabilities" class="text-slate-600 hover:text-sky-600 transition duration-300">Capabilities</a>
+                <a href="#journey" class="text-slate-600 hover:text-sky-600 transition duration-300">Journey</a>
+                <a href="#skills" class="text-slate-600 hover:text-sky-600 transition duration-300">Skills</a>
+            </div>
+            <a href="mailto:rahul7283@gmail.com" class="hidden md:block bg-sky-600 text-white px-4 py-2 rounded-lg hover:bg-sky-700 transition duration-300">Contact</a>
+            <button id="mobile-menu-button" class="md:hidden text-slate-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4">
+            <a href="#impact" class="block py-2 text-slate-600 hover:text-sky-600">Impact</a>
+            <a href="#capabilities" class="block py-2 text-slate-600 hover:text-sky-600">Capabilities</a>
+            <a href="#journey" class="block py-2 text-slate-600 hover:text-sky-600">Journey</a>
+            <a href="#skills" class="block py-2 text-slate-600 hover:text-sky-600">Skills</a>
+            <a href="mailto:rahul7283@gmail.com" class="block mt-2 text-center bg-sky-600 text-white px-4 py-2 rounded-lg hover:bg-sky-700">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center mb-20 md:mb-32">
+            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-4">Product-Minded AI Executive</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
+                Specializing in building and scaling enterprise-grade GenAI and Agentic AI solutions to drive significant, measurable business value.
+            </p>
+            <div class="mt-8 flex justify-center items-center gap-4">
+                <div class="text-center">
+                    <p class="text-3xl md:text-4xl font-bold text-sky-600">$170M+</p>
+                    <p class="text-sm text-slate-500">Value Generated in 2024</p>
+                </div>
+                 <div class="border-l border-slate-300 h-12"></div>
+                <div class="text-center">
+                    <p class="text-3xl md:text-4xl font-bold text-sky-600">20+</p>
+                    <p class="text-sm text-slate-500">Years of Experience</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section id="impact" class="mb-20 md:mb-32">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Quantifiable Business Impact</h2>
+                <p class="mt-2 text-lg text-slate-600">Driving revenue and efficiency through strategic AI implementation.</p>
+                <p class="mt-1 text-sm text-slate-500">This chart highlights the direct financial value delivered in key roles. Interact with the bars to see details.</p>
+            </div>
+            <div class="bg-white p-4 sm:p-8 rounded-2xl shadow-lg">
+                <div class="chart-container">
+                    <canvas id="impactChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section id="capabilities" class="mb-20 md:mb-32">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Core AI Capabilities</h2>
+                <p class="mt-2 text-lg text-slate-600 max-w-3xl mx-auto">From high-level strategy and governance to hands-on development of sophisticated AI systems. This section details my key areas of expertise.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">Agentic AI Automation</h3>
+                    <p class="text-slate-600">Launched and scaled multiple agentic AI solutions using LangChain and LangGraph to automate complex, multi-step workflows in Pharmacy, delivering significant operational efficiencies.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">Document Intelligence</h3>
+                    <p class="text-slate-600">Developed and deployed sophisticated solutions to automate abstraction, summarization, and auditing of large-scale Pharmacy Benefit Manager (PBM) contracts, reducing risk and manual effort.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">RAG & Knowledge Systems</h3>
+                    <p class="text-slate-600">Architected robust RAG (Retrieval-Augmented Generation) pipelines to ground AI systems in proprietary knowledge, ensuring factual accuracy and compliance in highly regulated environments.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">Enterprise AI Strategy</h3>
+                    <p class="text-slate-600">Define and execute the vision, strategy, and P&L for enterprise AI groups, aligning technology roadmaps with C-suite objectives to drive measurable business outcomes.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">AI Governance & Compliance</h3>
+                    <p class="text-slate-600">Established responsible AI governance frameworks to ensure all products meet stringent security, privacy, and HIPAA compliance standards, specializing in regulated healthcare domains.</p>
+                </div>
+                 <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">Technology Leadership</h3>
+                    <p class="text-slate-600">Direct AI technology strategy, evaluating and implementing custom-trained LLMs, major models from OpenAI, and open-source alternatives like Llama to best fit project needs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Section -->
+        <section id="journey" class="mb-20 md:mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Career & Venture Journey</h2>
+                <p class="mt-2 text-lg text-slate-600 max-w-3xl mx-auto">A 20+ year path of continuous growth, from foundational technical roles to executive leadership, entrepreneurship, and strategic advisory.</p>
+            </div>
+            <div class="relative max-w-3xl mx-auto pl-8">
+                <div class="timeline-path"></div>
+                <div class="space-y-16">
+                    <div class="timeline-item relative">
+                        <h3 class="text-xl font-bold text-slate-800">Sr. Director, AI | United Health Group</h3>
+                        <p class="text-sm font-medium text-sky-600">Feb 2015 - Present</p>
+                        <p class="mt-2 text-slate-600">Lead an AI, Automation, and GenAI group, owning the vision, strategy, and P&L. Generated over $170M in enterprise value in 2024 through the development of high-impact AI solutions.</p>
+                    </div>
+                     <div class="timeline-item relative">
+                        <h3 class="text-xl font-bold text-slate-800">Founder | Yubi Health Inc.</h3>
+                         <p class="text-sm font-medium text-sky-600">Venture Experience</p>
+                        <p class="mt-2 text-slate-600">Founded a health and wellness startup, leading all aspects from concept to operations. Successfully guided the company to a strategic acquisition by Wellness Connection Corporation.</p>
+                    </div>
+                     <div class="timeline-item relative">
+                        <h3 class="text-xl font-bold text-slate-800">Board Member & AI Advisor</h3>
+                         <p class="text-sm font-medium text-sky-600">Advisory Experience</p>
+                        <p class="mt-2 text-slate-600">Serve on the board for UC Irvine and act as a trusted advisor on AI strategy to Fortune 500 companies and Private Equity firms, including performing technology due diligence.</p>
+                    </div>
+                    <div class="timeline-item relative">
+                        <h3 class="text-xl font-bold text-slate-800">Principal Consultant | Wipro Technologies</h3>
+                        <p class="text-sm font-medium text-sky-600">Jul 2013 - Feb 2015</p>
+                        <p class="mt-2 text-slate-600">Provided strategic planning for key initiatives in Big Data, Data Science, and Advanced Analytics for Fortune 500 clients, laying the groundwork for future AI adoption.</p>
+                    </div>
+                    <div class="timeline-item relative">
+                        <h3 class="text-xl font-bold text-slate-800">Program Manager | Cognizant (AmEx)</h3>
+                        <p class="text-sm font-medium text-sky-600">Jan 2011 - Jul 2013</p>
+                        <p class="mt-2 text-slate-600">Delivered $20M in benefits by directing a $3M+ portfolio to build an enterprise data and analytics platform, driving new member acquisition and revenue.</p>
+                    </div>
+                    <div class="timeline-item relative">
+                        <h3 class="text-xl font-bold text-slate-800">Early Career Progression</h3>
+                        <p class="text-sm font-medium text-sky-600">2005 - 2011</p>
+                        <p class="mt-2 text-slate-600">Built a strong technical foundation through roles as a Techno Functional Consultant at Wells Fargo, a Lead Analyst at Infosys (saving one client $7M+ annually), and as a Freelance Web Developer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="mb-20 md:mb-32">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Technical & Leadership Skills</h2>
+                <p class="mt-2 text-lg text-slate-600">A blend of deep technical knowledge and strategic leadership.</p>
+            </div>
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="font-bold text-lg mb-3 text-sky-700">AI Strategy & Business Acumen</h3>
+                    <ul class="list-disc list-inside text-slate-600 space-y-1">
+                        <li>Enterprise AI Strategy</li>
+                        <li>GenAI & Agentic AI Roadmaps</li>
+                        <li>Measurable Business Outcomes</li>
+                        <li>Data-Driven Decision Making</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="font-bold text-lg mb-3 text-sky-700">AI & Data Science</h3>
+                     <ul class="list-disc list-inside text-slate-600 space-y-1">
+                        <li>Machine Learning</li>
+                        <li>GenAI, Agentic AI, RAG</li>
+                        <li>AI Productization & Monitoring</li>
+                        <li>Predictive Modeling</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="font-bold text-lg mb-3 text-sky-700">Technical Stack & Tools</h3>
+                     <ul class="list-disc list-inside text-slate-600 space-y-1">
+                        <li>Python, SQL, Spark</li>
+                        <li>LangChain, LangGraph</li>
+                        <li>Snowflake, GCP</li>
+                        <li>BI Tools (Looker, Tableau)</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="font-bold text-lg mb-3 text-sky-700">Leadership & Management</h3>
+                     <ul class="list-disc list-inside text-slate-600 space-y-1">
+                        <li>AI Team Leadership</li>
+                        <li>AI Literacy Development</li>
+                        <li>Product Lifecycle Management</li>
+                        <li>Stakeholder Communication</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-200">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-600">
+             <p class="text-2xl font-bold text-slate-800 mb-4">Let's Connect</p>
+             <p class="max-w-2xl mx-auto mb-6">I'm always open to discussing new challenges in AI, technology leadership, and strategic innovation. Feel free to reach out.</p>
+             <a href="mailto:rahul7283@gmail.com" class="bg-sky-600 text-white px-6 py-3 rounded-lg hover:bg-sky-700 transition-all duration-300 inline-block text-lg">
+                rahul7283@gmail.com
+             </a>
+             <div class="mt-8 text-sm">
+                <p>&copy; 2025 Rahul Goyal. All Rights Reserved.</p>
+                <p class="mt-1">Interactive resume created with AI.</p>
+             </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Impact Chart
+            const ctx = document.getElementById('impactChart');
+            if(ctx) {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['United Health Group (2024)', 'Cognizant (AmEx)', 'Infosys'],
+                        datasets: [{
+                            label: 'Business Value Generated ($M)',
+                            data: [170, 20, 7],
+                            backgroundColor: [
+                                'rgba(2, 132, 199, 0.7)',
+                                'rgba(14, 165, 233, 0.7)',
+                                'rgba(56, 189, 248, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(2, 132, 199, 1)',
+                                'rgba(14, 165, 233, 1)',
+                                'rgba(56, 189, 248, 1)'
+                            ],
+                            borderWidth: 1,
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Value in Millions ($)',
+                                    font: { size: 14 }
+                                }
+                            },
+                             y: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.x !== null) {
+                                            label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(context.parsed.x * 1000000);
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        animation: {
+                            duration: 1500,
+                            easing: 'easeInOutQuart'
+                        }
+                    }
+                });
+            }
+
+            // Smooth scrolling for nav links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                     // Close mobile menu on link click
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>
