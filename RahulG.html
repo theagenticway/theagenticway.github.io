@@ -22,7 +22,7 @@
     Chosen Palette: "Warm Neutral & Tech Blue" - A base of light grays (slate-100/200) and off-white creates a calm, professional backdrop. A sophisticated, muted blue (sky-600) is used as an accent for interactive elements and highlights, conveying a sense of modern technology and trust.
     Application Structure Plan: The SPA is designed as a non-linear, interactive dashboard. This structure was chosen because a senior profile like this has multiple facets (leadership, technical skill, venture experience) that a user might want to explore in different orders. The top navigation allows for immediate access to key stories: (1) Quantifiable Impact, (2) Core Capabilities, and (3) Career Journey. This is more engaging and user-directed than a traditional chronological resume, allowing recruiters to quickly find the information most relevant to them.
     Visualization & Content Choices: 
-    - Report Info: Quantified business value ($170M, $20M, $7M) -> Goal: Compare/Impress -> Viz: Bar Chart (Chart.js) -> Interaction: Animated on load, tooltips on hover. Justification: A chart provides immediate, powerful proof of financial impact, far more effective than text alone.
+    - Report Info: Quantified business value ($170M, $20M, $7M) -> Goal: Compare/Impress -> Viz: "Big Number" Cards (HTML/CSS) -> Interaction: None needed, direct impact. Justification: Large, bold typography for key metrics provides immediate, powerful proof of financial impact, making the numbers the central focus.
     - Report Info: Career history -> Goal: Show Progression/Change -> Viz: Vertical Timeline (HTML/CSS) -> Interaction: Section reveals on scroll. Justification: A visual timeline is more intuitive for understanding a 20+ year career path than a simple list, and clearly separates corporate, venture, and advisory roles.
     - Report Info: Core competencies & AI projects -> Goal: Organize/Explore -> Viz: Interactive Cards (HTML/CSS/JS) -> Interaction: Hover effects and clear grouping. Justification: Cards break down complex skills into digestible, visually distinct topics, inviting users to explore areas of interest.
     - Report Info: Key Skills -> Goal: Inform -> Viz: Styled Lists (HTML/CSS). Justification: A clean, categorized list is the most scannable and efficient way to present a large number of technical and leadership skills.
@@ -30,17 +30,6 @@
     -->
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-        }
-        @media (min-width: 768px) {
-            .chart-container { height: 450px; }
-        }
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -101,8 +90,8 @@
             </p>
             <div class="mt-8 flex justify-center items-center gap-4">
                 <div class="text-center">
-                    <p class="text-3xl md:text-4xl font-bold text-sky-600">$170M+</p>
-                    <p class="text-sm text-slate-500">Value Generated in 2024</p>
+                    <p class="text-3xl md:text-4xl font-bold text-sky-600">$100M+</p>
+                    <p class="text-sm text-slate-500">Value Delivered YTD in 2025</p>
                 </div>
                  <div class="border-l border-slate-300 h-12"></div>
                 <div class="text-center">
@@ -117,11 +106,23 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Quantifiable Business Impact</h2>
                 <p class="mt-2 text-lg text-slate-600">Driving revenue and efficiency through strategic AI implementation.</p>
-                <p class="mt-1 text-sm text-slate-500">This chart highlights the direct financial value delivered in key roles. Interact with the bars to see details.</p>
+                <p class="mt-1 text-sm text-slate-500">Key financial outcomes from major roles.</p>
             </div>
-            <div class="bg-white p-4 sm:p-8 rounded-2xl shadow-lg">
-                <div class="chart-container">
-                    <canvas id="impactChart"></canvas>
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-8 rounded-2xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <p class="text-5xl font-bold text-sky-600 mb-2">$170M+</p>
+                    <h3 class="text-xl font-semibold text-slate-800">United Health Group</h3>
+                    <p class="text-sm text-slate-500">(2024 Value Generation)</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <p class="text-5xl font-bold text-sky-600 mb-2">$20M</p>
+                    <h3 class="text-xl font-semibold text-slate-800">Cognizant (AmEx)</h3>
+                    <p class="text-sm text-slate-500">(Portfolio Benefits Delivered)</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <p class="text-5xl font-bold text-sky-600 mb-2">$7M+</p>
+                    <h3 class="text-xl font-semibold text-slate-800">Infosys</h3>
+                    <p class="text-sm text-slate-500">(Annual Client Savings)</p>
                 </div>
             </div>
         </section>
@@ -275,76 +276,6 @@
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
-
-            // Impact Chart
-            const ctx = document.getElementById('impactChart');
-            if(ctx) {
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['United Health Group (2024)', 'Cognizant (AmEx)', 'Infosys'],
-                        datasets: [{
-                            label: 'Business Value Generated ($M)',
-                            data: [170, 20, 7],
-                            backgroundColor: [
-                                'rgba(2, 132, 199, 0.7)',
-                                'rgba(14, 165, 233, 0.7)',
-                                'rgba(56, 189, 248, 0.7)'
-                            ],
-                            borderColor: [
-                                'rgba(2, 132, 199, 1)',
-                                'rgba(14, 165, 233, 1)',
-                                'rgba(56, 189, 248, 1)'
-                            ],
-                            borderWidth: 1,
-                            borderRadius: 8
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        indexAxis: 'y',
-                        scales: {
-                            x: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Value in Millions ($)',
-                                    font: { size: 14 }
-                                }
-                            },
-                             y: {
-                                grid: {
-                                    display: false
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        let label = context.dataset.label || '';
-                                        if (label) {
-                                            label += ': ';
-                                        }
-                                        if (context.parsed.x !== null) {
-                                            label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(context.parsed.x * 1000000);
-                                        }
-                                        return label;
-                                    }
-                                }
-                            }
-                        },
-                        animation: {
-                            duration: 1500,
-                            easing: 'easeInOutQuart'
-                        }
-                    }
-                });
-            }
 
             // Smooth scrolling for nav links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
