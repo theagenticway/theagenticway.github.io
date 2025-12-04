@@ -283,7 +283,7 @@
         </section>
 
         <!-- SLIDE 6: THE PROOF -->
-        <section id="slide-6" class="min-h-screen flex flex-col justify-center reveal" data-note="Here is the result. Legal Intelligence Platform. It does Strategic Forecasting (Predicting success) and Auto Risk Flagging. This works because we managed the PROCESS (Slide 3) and built the STRUCTURE (Slide 5).">
+        <section id="slide-6" class="min-h-screen flex flex-col justify-center reveal" data-note="Here is the result. Legal Intelligence Platform. It does Strategic Forecasting and Auto Risk Flagging. This works because we managed the PROCESS (Slide 3) and built the STRUCTURE (Slide 5).">
             <div class="mb-12 border-l-4 border-teal-500 pl-6">
                 <h2 class="text-3xl font-bold text-white mb-2">The Proof</h2>
                 <p class="text-xl text-slate-400">Real-World Legal AI Features</p>
@@ -349,8 +349,81 @@
             </div>
         </section>
 
-        <!-- SLIDE 7: THE TEAM -->
-        <section id="slide-7" class="min-h-screen flex flex-col justify-center reveal" data-note="It takes a village. Specifically these 5 roles. You need the 'Conductor' to build the agent, but you also need the 'Analytics Engineer' for the Semantic Layer. Hire for these profiles.">
+        <!-- NEW SLIDE 7: REALITY CHECK (Day 2 Challenges) -->
+        <section id="slide-7-reality" class="min-h-screen flex flex-col justify-center reveal" data-note="These are the 'Day 2' problems. 1. Evals: Non-deterministic agents mean testing is a nightmare. 2. Infinite Loops: Agents can burn $500 overnight trying to fix a file path. 3. The Undo Button: Agents don't just talk, they ACT. We need human-in-the-loop safety.">
+            <div class="mb-12 border-l-4 border-orange-500 pl-6">
+                <h2 class="text-3xl font-bold text-white mb-2">The "Day 2" Reality Check</h2>
+                <p class="text-xl text-slate-400">What happens <i>after</i> you go to production?</p>
+            </div>
+
+            <!-- Operational Risks -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-slate-800/80 p-6 rounded-xl border border-orange-500/30 hover:border-orange-500 transition-colors">
+                    <div class="flex items-center gap-3 mb-4 text-orange-400">
+                        <i class="fa-solid fa-vial-circle-check text-2xl"></i>
+                        <h3 class="font-bold">The "Eval" Crisis</h3>
+                    </div>
+                    <p class="text-sm text-slate-300 mb-3">Agents are non-deterministic. A fix in "Research" might break "Summarization".</p>
+                    <div class="text-xs bg-slate-900 p-2 rounded text-orange-200">
+                        <i class="fa-solid fa-wrench mr-1"></i> <strong>Fix:</strong> Automated Eval Frameworks
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-xl border border-orange-500/30 hover:border-orange-500 transition-colors">
+                    <div class="flex items-center gap-3 mb-4 text-orange-400">
+                        <i class="fa-solid fa-infinity text-2xl"></i>
+                        <h3 class="font-bold">Infinite Loops</h3>
+                    </div>
+                    <p class="text-sm text-slate-300 mb-3">Agents get stuck retrying failed actions. One night can cost $500 in API fees.</p>
+                    <div class="text-xs bg-slate-900 p-2 rounded text-orange-200">
+                        <i class="fa-solid fa-wrench mr-1"></i> <strong>Fix:</strong> Hard "Circuit Breakers"
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-xl border border-orange-500/30 hover:border-orange-500 transition-colors">
+                    <div class="flex items-center gap-3 mb-4 text-orange-400">
+                        <i class="fa-solid fa-rotate-left text-2xl"></i>
+                        <h3 class="font-bold">The Undo Problem</h3>
+                    </div>
+                    <p class="text-sm text-slate-300 mb-3">Chatbots talk; Agents <i>act</i>. You can't "un-send" a legal notice.</p>
+                    <div class="text-xs bg-slate-900 p-2 rounded text-orange-200">
+                        <i class="fa-solid fa-wrench mr-1"></i> <strong>Fix:</strong> Human-in-the-Loop UI
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engineering Deep Dives (Blueprints) -->
+            <h3 class="text-xl font-bold text-slate-400 mb-6 border-b border-slate-700 pb-2">Technical Deep Dives (Level 201)</h3>
+            <div class="space-y-4">
+                <!-- Row 1: Amnesia -->
+                <div class="flex flex-col md:flex-row gap-4 bg-slate-900 p-4 rounded-lg border-l-2 border-blue-500">
+                    <div class="w-full md:w-1/4 font-bold text-blue-400">Problem: Amnesia</div>
+                    <div class="w-full md:w-3/4 text-sm text-slate-300">
+                        Standard RAG cuts legal clauses in half ("Bad Chunking"). 
+                        <span class="block mt-1 text-white"><i class="fa-solid fa-arrow-right text-blue-500"></i> Solution: <strong>Semantic Chunking</strong> (Split by topic, not token count).</span>
+                    </div>
+                </div>
+                 <!-- Row 2: Latency -->
+                 <div class="flex flex-col md:flex-row gap-4 bg-slate-900 p-4 rounded-lg border-l-2 border-purple-500">
+                    <div class="w-full md:w-1/4 font-bold text-purple-400">Problem: Speed</div>
+                    <div class="w-full md:w-3/4 text-sm text-slate-300">
+                        Sequential agents (Plan -> Research -> Draft) take 3+ minutes.
+                        <span class="block mt-1 text-white"><i class="fa-solid fa-arrow-right text-purple-500"></i> Solution: <strong>Map-Reduce</strong> (Spawn 10 parallel agents).</span>
+                    </div>
+                </div>
+                 <!-- Row 3: Cost -->
+                 <div class="flex flex-col md:flex-row gap-4 bg-slate-900 p-4 rounded-lg border-l-2 border-green-500">
+                    <div class="w-full md:w-1/4 font-bold text-green-400">Problem: Cost</div>
+                    <div class="w-full md:w-3/4 text-sm text-slate-300">
+                        Using GPT-4/Gemini Pro for formatting is financial suicide.
+                        <span class="block mt-1 text-white"><i class="fa-solid fa-arrow-right text-green-500"></i> Solution: <strong>Tiered Models</strong> (Flash for tasks, Pro for brains).</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: THE TEAM (Renumbered) -->
+        <section id="slide-8" class="min-h-screen flex flex-col justify-center reveal" data-note="It takes a village. You need the 'Conductor' to build the agent, 'AI Ops' to build the Circuit Breakers (Slide 7), and 'Analytics Engineer' for the Semantic Layer.">
             <div class="mb-12 border-l-4 border-pink-500 pl-6">
                 <h2 class="text-3xl font-bold text-white mb-2">The Team</h2>
                 <p class="text-xl text-slate-400">5 Key Roles for Agentic AI</p>
@@ -390,8 +463,8 @@
             </div>
         </section>
 
-        <!-- SLIDE 8: CONCLUSION -->
-        <section id="slide-8" class="min-h-[50vh] flex flex-col justify-center items-center text-center reveal" data-note="Wrap up: Agentic AI is powerful, but only if you step up as managers. Feed context, interrogate the plan, build structure. Thank you.">
+        <!-- SLIDE 9: CONCLUSION (Renumbered) -->
+        <section id="slide-9" class="min-h-[50vh] flex flex-col justify-center items-center text-center reveal" data-note="Wrap up: Agentic AI is powerful, but only if you step up as managers. Feed context, interrogate the plan, build structure. Thank you.">
             <i class="fa-solid fa-quote-left text-4xl text-slate-600 mb-6"></i>
             <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">
                 "The job isn't done<br>when the feature is live."
