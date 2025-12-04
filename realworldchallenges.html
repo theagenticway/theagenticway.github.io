@@ -252,102 +252,8 @@
             </div>
         </section>
 
-        <!-- SLIDE 5: HIERARCHY -->
-        <section id="slide-5" class="min-h-[60vh] flex flex-col justify-center reveal" data-note="Challenge #3: Data Chaos. Agents need STRUCTURE. We built a strict backbone: Clients -> Cases -> Projects. This solves the 'needle in a haystack' problem for RAG.">
-            <div class="mb-12 border-l-4 border-yellow-500 pl-6">
-                <h2 class="text-3xl font-bold text-white mb-2">The Backbone</h2>
-                <p class="text-xl text-slate-400">Organizational Hierarchy prevents Chaos</p>
-            </div>
-
-            <div class="flex flex-col items-center justify-center space-y-6">
-                <!-- Node 1 -->
-                <div class="w-64 bg-slate-700 border border-slate-500 p-4 rounded-lg text-center font-bold text-white text-lg shadow-lg z-10">
-                    <i class="fa-solid fa-building mr-2 text-yellow-500"></i> Clients
-                </div>
-                <!-- Line -->
-                <div class="h-8 w-1 bg-slate-600"></div>
-                <!-- Node 2 -->
-                <div class="w-64 bg-slate-800 border border-slate-600 p-4 rounded-lg text-center font-bold text-slate-200 text-lg shadow-lg z-10">
-                    <i class="fa-solid fa-briefcase mr-2 text-blue-500"></i> Cases
-                </div>
-                <!-- Line -->
-                <div class="h-8 w-1 bg-slate-600"></div>
-                <!-- Node 3 -->
-                <div class="w-64 bg-slate-900 border border-slate-700 p-4 rounded-lg text-center font-bold text-slate-400 text-lg shadow-lg z-10">
-                    <i class="fa-solid fa-list-check mr-2 text-green-500"></i> Projects
-                </div>
-            </div>
-            <p class="mt-12 text-center text-slate-400 max-w-lg mx-auto">
-                Prevents "Data Silos" and gives the agent a clear map of where every document lives.
-            </p>
-        </section>
-
-        <!-- SLIDE 6: THE PROOF -->
-        <section id="slide-6" class="min-h-screen flex flex-col justify-center reveal" data-note="Here is the result. Legal Intelligence Platform. It does Strategic Forecasting and Auto Risk Flagging. This works because we managed the PROCESS (Slide 3) and built the STRUCTURE (Slide 5).">
-            <div class="mb-12 border-l-4 border-teal-500 pl-6">
-                <h2 class="text-3xl font-bold text-white mb-2">The Proof</h2>
-                <p class="text-xl text-slate-400">Real-World Legal AI Features</p>
-            </div>
-
-            <div class="bg-slate-900 rounded-2xl p-2 border border-slate-700 shadow-2xl">
-                <!-- Mock Browser Window -->
-                <div class="bg-slate-800 rounded-t-xl p-3 flex items-center gap-2 border-b border-slate-700">
-                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                    <div class="ml-4 bg-slate-900 px-3 py-1 rounded text-xs text-slate-500 flex-1">legal-agent-dashboard.internal</div>
-                </div>
-                
-                <div class="p-8 grid md:grid-cols-2 gap-8">
-                    <!-- Feature 1 -->
-                    <div class="bg-slate-800/50 p-6 rounded-lg border-l-4 border-teal-500">
-                        <div class="flex justify-between items-start mb-4">
-                            <h4 class="font-bold text-teal-400">Strategic Forecasting [Image of Bar Chart]</h4>
-                            <span class="bg-teal-900/50 text-teal-400 text-xs px-2 py-1 rounded">Analysis</span>
-                        </div>
-                        <p class="text-slate-300 text-sm mb-4">
-                            Analyzing 50+ years of case law to predict "Likelihood of Success".
-                        </p>
-                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
-                            <div class="bg-teal-500 h-full w-[78%]"></div>
-                        </div>
-                        <div class="flex justify-between text-xs text-slate-500 mt-2">
-                            <span>Probability</span>
-                            <span>78% Success</span>
-                        </div>
-                    </div>
-
-                    <!-- Feature 2 -->
-                    <div class="bg-slate-800/50 p-6 rounded-lg border-l-4 border-red-500">
-                        <div class="flex justify-between items-start mb-4">
-                            <h4 class="font-bold text-red-400">Automated Risk Flagging</h4>
-                            <span class="bg-red-900/50 text-red-400 text-xs px-2 py-1 rounded">Urgent</span>
-                        </div>
-                        <ul class="space-y-3 text-sm text-slate-300">
-                            <li class="flex items-center gap-2">
-                                <i class="fa-solid fa-triangle-exclamation text-red-500"></i>
-                                Breach of Fiduciary Duty detected
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <i class="fa-solid fa-triangle-exclamation text-yellow-500"></i>
-                                Missing compliance addendum
-                            </li>
-                        </ul>
-                    </div>
-
-                     <!-- Feature 3 -->
-                     <div class="bg-slate-800/50 p-6 rounded-lg border-l-4 border-blue-500 col-span-2">
-                        <div class="flex justify-between items-start mb-4">
-                            <h4 class="font-bold text-blue-400">Litigation Prep</h4>
-                            <span class="bg-blue-900/50 text-blue-400 text-xs px-2 py-1 rounded">Automation</span>
-                        </div>
-                        <p class="text-slate-300 text-sm">
-                            Agent automatically generates chronologies from thousands of discovery documents.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
+        
 
         <!-- NEW SLIDE 7: REALITY CHECK (Day 2 Challenges) -->
         <section id="slide-7-reality" class="min-h-screen flex flex-col justify-center reveal" data-note="These are the 'Day 2' problems. 1. Evals: Non-deterministic agents mean testing is a nightmare. 2. Infinite Loops: Agents can burn $500 overnight trying to fix a file path. 3. The Undo Button: Agents don't just talk, they ACT. We need human-in-the-loop safety.">
@@ -462,7 +368,72 @@
                 </div>
             </div>
         </section>
+<!-- SLIDE 6: THE PROOF -->
+        <section id="slide-6" class="min-h-screen flex flex-col justify-center reveal" data-note="Here is the result. Legal Intelligence Platform. It does Strategic Forecasting and Auto Risk Flagging. This works because we managed the PROCESS (Slide 3) and built the STRUCTURE (Slide 5).">
+            <div class="mb-12 border-l-4 border-teal-500 pl-6">
+                <h2 class="text-3xl font-bold text-white mb-2">The Proof</h2>
+                <p class="text-xl text-slate-400">Real-World Legal AI Features</p>
+            </div>
 
+            <div class="bg-slate-900 rounded-2xl p-2 border border-slate-700 shadow-2xl">
+                <!-- Mock Browser Window -->
+                <div class="bg-slate-800 rounded-t-xl p-3 flex items-center gap-2 border-b border-slate-700">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div class="ml-4 bg-slate-900 px-3 py-1 rounded text-xs text-slate-500 flex-1">legal-agent-dashboard.internal</div>
+                </div>
+                
+                <div class="p-8 grid md:grid-cols-2 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-slate-800/50 p-6 rounded-lg border-l-4 border-teal-500">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="font-bold text-teal-400">Strategic Forecasting [Image of Bar Chart]</h4>
+                            <span class="bg-teal-900/50 text-teal-400 text-xs px-2 py-1 rounded">Analysis</span>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-4">
+                            Analyzing 50+ years of case law to predict "Likelihood of Success".
+                        </p>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-teal-500 h-full w-[78%]"></div>
+                        </div>
+                        <div class="flex justify-between text-xs text-slate-500 mt-2">
+                            <span>Probability</span>
+                            <span>78% Success</span>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="bg-slate-800/50 p-6 rounded-lg border-l-4 border-red-500">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="font-bold text-red-400">Automated Risk Flagging</h4>
+                            <span class="bg-red-900/50 text-red-400 text-xs px-2 py-1 rounded">Urgent</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-triangle-exclamation text-red-500"></i>
+                                Breach of Fiduciary Duty detected
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-triangle-exclamation text-yellow-500"></i>
+                                Missing compliance addendum
+                            </li>
+                        </ul>
+                    </div>
+
+                     <!-- Feature 3 -->
+                     <div class="bg-slate-800/50 p-6 rounded-lg border-l-4 border-blue-500 col-span-2">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="font-bold text-blue-400">Litigation Prep</h4>
+                            <span class="bg-blue-900/50 text-blue-400 text-xs px-2 py-1 rounded">Automation</span>
+                        </div>
+                        <p class="text-slate-300 text-sm">
+                            Agent automatically generates chronologies from thousands of discovery documents.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- SLIDE 9: CONCLUSION (Renumbered) -->
         <section id="slide-9" class="min-h-[50vh] flex flex-col justify-center items-center text-center reveal" data-note="Wrap up: Agentic AI is powerful, but only if you step up as managers. Feed context, interrogate the plan, build structure. Thank you.">
             <i class="fa-solid fa-quote-left text-4xl text-slate-600 mb-6"></i>
