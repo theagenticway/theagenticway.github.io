@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Christmas 2026: Hawaii Plan</title>
+    <style>
+        :root {
+            --primary: #006064; /* Teal */
+            --secondary: #E0F7FA; /* Light Blue */
+            --accent: #FF6F00; /* Amber for highlights */
+            --text: #333;
+            --light-text: #666;
+            --veg-color: #2E7D32;
+            --std-color: #1565C0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--primary), #00838F);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
+
+        /* Navigation */
+        nav {
+            background: white;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            padding: 1rem 2rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: bold;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+        nav a:hover, nav a.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            background-color: #f0fcfc;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Section Styling */
+        section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            padding: 2rem;
+            display: none; /* Hidden by default for tab logic */
+        }
+        section.active { display: block; }
+
+        h2 { border-bottom: 2px solid var(--secondary); padding-bottom: 10px; color: var(--primary); }
+        h3 { color: #444; margin-top: 1.5rem; }
+
+        /* Resort Cards */
+        .resort-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        @media (max-width: 700px) { .resort-grid { grid-template-columns: 1fr; } }
+        
+        .resort-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            background: #fff;
+        }
+        .resort-card strong { color: var(--primary); display: block; font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+        /* Itinerary Timeline */
+        .day-block {
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--secondary);
+        }
+        .day-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Dining Box */
+        .dining-box {
+            background-color: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+        .dining-title { font-weight: bold; color: #333; display: flex; justify-content: space-between; }
+        .diet-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .diet-col h5 { margin: 0 0 5px 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .std-menu h5 { color: var(--std-color); }
+        .veg-menu h5 { color: var(--veg-color); }
+
+        /* Highlights */
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Hawaii Christmas 2026</h1>
+    <p>Family Planning: Multi-Generational Itineraries</p>
+</header>
+
+<nav>
+    <a href="#" onclick="showTab('bigisland', this)" class="active">Big Island</a>
+    <a href="#" onclick="showTab('oahu', this)">Oahu</a>
+    <a href="#" onclick="showTab('maui', this)">Maui</a>
+</nav>
+
+<div class="container">
+
+    <section id="bigisland" class="active">
+        <h2>The Big Island (Top Pick)</h2>
+        <p>Best for adventure, space, and unifying "Farm-to-Table" dining. Accessible sightseeing for Grandparents, huge nature for the boys.</p>
+
+        <h3>Where to Stay</h3>
+        <div class="resort-grid">
+            <div class="resort-card">
+                <strong>Four Seasons Hualalai</strong>
+                <p>The gold standard. Villa-style rooms (great for seniors), and the "King's Pond" (swimmable lava aquarium) for the kids.</p>
+            </div>
+            <div class="resort-card">
+                <strong>Mauna Lani (Auberge)</strong>
+                <p>Modern luxury. Calm beach cove protected from waves. Home to <em>CanoeHouse</em>, the island's best restaurant.</p>
+            </div>
+        </div>
+
+        <h3>7-Day Itinerary</h3>
+
+        <div class="day-block">
+            <div class="day-title">Day 1: Arrival & Lava Pools</div>
+            <p>Settle in. Boys snorkel in the resort lagoon; Grandparents relax on the lanai.</p>
+            <div class="dining-box">
+                <div class="dining-title">'Ulu Ocean Grill (On-site)</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Fresh Catch (Ono, Mahimahi) or Grilled Steaks.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Dedicated Vegan menu (e.g., Roasted Hearts of Palm, Tofu Curry).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-block">
+            <div class="day-title">Day 2: Volcano National Park</div>
+            <p><strong>Grandparents:</strong> Accessible views at Steam Vents/Overlook. <strong>Boys:</strong> Hike Thurston Lava Tube.</p>
+            <div class="dining-box">
+                <div class="dining-title">Kilauea Lodge</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Duck, Lamb, or Catch of the Day.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Vegetable Napoleon or custom pasta (accommodating kitchen).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-block">
+            <div class="day-title">Day 3: Mantas & Beach</div>
+            <p>Morning at Hapuna Beach. Evening <strong>Manta Ray Night Snorkel</strong> (Boat ride for everyone, snorkel for boys).</p>
+            <div class="dining-box">
+                <div class="dining-title">Merriman’s Waimea</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Mac Nut Crusted Fish, Prime Steak.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Famous "Dirt Grown" Vegetables, Taro Hummus, Falafel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-block">
+            <div class="day-title">Day 4: Waimea Cowboys</div>
+            <p>Horseback riding for kids; Parker Ranch history for seniors.</p>
+            <div class="dining-box">
+                <div class="dining-title">CanoeHouse <span class="badge">Highlight</span></div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Grilled Kona Lobster, Wagyu Beef.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Separate "MY" Menu (Plant-Based), e.g., Corn Ribs, Grilled Mushrooms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-block">
+            <div class="day-title">Day 5: Waterfalls</div>
+            <p>Drive Hamakua Coast. Akaka Falls or Rainbow Falls (Drive-up view).</p>
+            <div class="dining-box">
+                <div class="dining-title">Lava Lava Beach Club (Casual)</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Ribs, Burgers, Fish Tacos.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Veggie burgers (check bun) and large salads.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="oahu">
+        <h2>Oahu (Dining Winner)</h2>
+        <p>Best for variety, history (Pearl Harbor), and concurrent high-end menus for mixed diets.</p>
+
+        <h3>Where to Stay</h3>
+        <div class="resort-grid">
+            <div class="resort-card">
+                <strong>Four Seasons Ko Olina</strong>
+                <p>Protected lagoons (safe swimming), removed from city noise. Near Disney Aulani for character breakfast option.</p>
+            </div>
+            <div class="resort-card">
+                <strong>The Kahala Resort</strong>
+                <p>Iconic luxury near Waikiki but secluded. Has its own private dolphin lagoon.</p>
+            </div>
+        </div>
+
+        <h3>7-Day Itinerary</h3>
+
+        <div class="day-block">
+            <div class="day-title">Day 1: Arrival</div>
+            <div class="dining-box">
+                <div class="dining-title">Mina’s Fish House</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Ginger Scallion Whole Fish, Seafood Tower.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Vegetable Curry, custom Veggie Cakes (Chef is excellent).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-block">
+            <div class="day-title">Day 2: Pearl Harbor</div>
+            <p>USS Arizona (Accessible). Boys can add Submarine tour.</p>
+            <div class="dining-box">
+                <div class="dining-title">Nature Waikiki <span class="badge">Top Pick</span></div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Sustainable Island French Tasting Menu.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Parallel Plant-Based Tasting Menu (Same timing/courses).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-block">
+            <div class="day-title">Day 3: Jurassic Valley (Kualoa)</div>
+            <p><strong>Active:</strong> UTV Raptor Tour. <strong>Grandparents:</strong> Movie Sites Bus Tour.</p>
+            <div class="dining-box">
+                <div class="dining-title">Noe (Italian)</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Veal Tagliatelle, Whipped Ricotta.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Egg-free pasta w/ Marinara & Garden Veg.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-block">
+            <div class="day-title">Day 4: North Shore</div>
+            <p>Pipeline waves & Waimea Valley botanical walk.</p>
+            <div class="dining-box">
+                <div class="dining-title">Tane Vegan Izakaya</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p><em>Note: This is fully Vegan sushi, but rated world-class by all eaters.</em></p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>The best plant-based sushi in the Pacific.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="maui">
+        <h2>Maui (Kid's Choice)</h2>
+        <p>Best for pools and whale watching. Dining requires reservations at specific accommodating venues.</p>
+
+        <h3>Where to Stay</h3>
+        <div class="resort-grid">
+            <div class="resort-card">
+                <strong>Grand Wailea</strong>
+                <p>Unbeatable pools: slides, water elevator, rapids. Very energetic.</p>
+            </div>
+            <div class="resort-card">
+                <strong>Four Seasons Maui</strong>
+                <p>Higher service, calmer, spacious rooms. Next door to Grand Wailea.</p>
+            </div>
+        </div>
+
+        <h3>7-Day Itinerary</h3>
+
+        <div class="day-block">
+            <div class="day-title">Day 1: Arrival</div>
+            <div class="dining-box">
+                <div class="dining-title">Humuhumunukunukuapua'a</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Fresh Lobster, Steak.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Tofu dishes and vegetable curries (verify fish sauce).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-block">
+            <div class="day-title">Day 2: Whale Watching</div>
+            <p>Catamaran cruise from Ma’alaea Harbor.</p>
+            <div class="dining-box">
+                <div class="dining-title">Star Noodle / Mala Tavern</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Seared Ahi, Pork Belly.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Wok-fried Brussels Sprouts, Hooded Tofu, Garlic Noodles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-block">
+            <div class="day-title">Day 3: Upcountry Farm Lunch</div>
+            <div class="dining-box">
+                <div class="dining-title">O’o Farm Lunch Tour</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Grilled Catch of the Day / Chicken.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Grilled Tofu & Root Veggies (Communal meal).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-block">
+            <div class="day-title">Day 4: The Luau</div>
+            <p><strong>Feast at Lele:</strong> A sit-down 5-course meal (not a buffet).</p>
+            <div class="dining-box">
+                <div class="dining-title">Feast at Lele</div>
+                <div class="diet-grid">
+                    <div class="diet-col std-menu">
+                        <h5>Standard Menu</h5>
+                        <p>Kalua Pork, Duck Salad, Fish.</p>
+                    </div>
+                    <div class="diet-col veg-menu">
+                        <h5>Vegetarian</h5>
+                        <p>Dedicated Vegan courses (e.g., Tofu & Broccoli).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    function showTab(islandId, linkElement) {
+        // Hide all sections
+        const sections = document.querySelectorAll('section');
+        sections.forEach(sec => sec.classList.remove('active'));
+
+        // Show selected section
+        document.getElementById(islandId).classList.add('active');
+
+        // Update Nav visual state
+        const links = document.querySelectorAll('nav a');
+        links.forEach(link => link.classList.remove('active'));
+        linkElement.classList.add('active');
+        
+        // Prevent default jump
+        event.preventDefault();
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
