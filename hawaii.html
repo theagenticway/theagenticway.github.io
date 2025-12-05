@@ -6,13 +6,17 @@
     <title>Family Christmas 2026: Hawaii Plan</title>
     <style>
         :root {
-            --primary: #006064; /* Teal */
-            --secondary: #E0F7FA; /* Light Blue */
-            --accent: #FF6F00; /* Amber for highlights */
-            --text: #333;
-            --light-text: #666;
-            --veg-color: #2E7D32;
-            --std-color: #1565C0;
+            --primary: #00BCD4; /* Cyan/Teal */
+            --secondary: rgba(255, 255, 255, 0.1); /* Glass effect */
+            --accent: #FF9800; /* Orange */
+            --bg-dark: #121212;
+            --text: #E0E0E0;
+            --light-text: #B0B0B0;
+            --veg-color: #81C784; /* Light Green */
+            --std-color: #64B5F6; /* Light Blue */
+            --glass-bg: rgba(30, 30, 30, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
         body {
@@ -21,63 +25,91 @@
             color: var(--text);
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background: linear-gradient(45deg, #1a1a1a, #2c3e50);
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism Base */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            border-radius: 16px;
         }
 
         /* Hero Section */
         header {
-            background: linear-gradient(135deg, var(--primary), #00838F);
-            color: white;
-            padding: 3rem 1rem;
+            background: transparent;
+            padding: 4rem 1rem;
             text-align: center;
         }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
+        header h1 { 
+            margin: 0; 
+            font-size: 3rem; 
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; color: var(--light-text); }
 
         /* Navigation */
         nav {
-            background: white;
             position: sticky;
-            top: 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            top: 20px;
             z-index: 100;
             display: flex;
             justify-content: center;
+            padding: 10px;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
         }
         nav a {
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             text-decoration: none;
-            color: var(--text);
+            color: var(--light-text);
             font-weight: bold;
-            border-bottom: 3px solid transparent;
             transition: 0.3s;
+            border-radius: 12px;
+            margin: 0 5px;
         }
         nav a:hover, nav a.active {
-            color: var(--primary);
-            border-bottom: 3px solid var(--primary);
-            background-color: #f0fcfc;
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 10px rgba(0,255,255,0.1);
         }
 
         /* Container */
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 0 1rem 4rem 1rem;
         }
 
         /* Section Styling */
         section {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 2.5rem;
             margin-bottom: 3rem;
-            padding: 2rem;
-            display: none; /* Hidden by default for tab logic */
+            display: none; /* Hidden by default */
         }
-        section.active { display: block; }
+        section.active { 
+            display: block; 
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        h2 { border-bottom: 2px solid var(--secondary); padding-bottom: 10px; color: var(--primary); }
-        h3 { color: #444; margin-top: 1.5rem; }
+        h2 { 
+            border-bottom: 1px solid var(--glass-border); 
+            padding-bottom: 15px; 
+            color: var(--primary); 
+            font-size: 2rem;
+        }
+        h3 { color: var(--light-text); margin-top: 2rem; font-size: 1.4rem; }
+        p, li { color: var(--light-text); }
 
         /* Resort Cards */
         .resort-grid {
@@ -89,56 +121,73 @@
         @media (max-width: 700px) { .resort-grid { grid-template-columns: 1fr; } }
         
         .resort-card {
-            border: 1px solid #eee;
-            border-radius: 8px;
             padding: 1.5rem;
-            background: #fff;
+            transition: transform 0.3s;
         }
-        .resort-card strong { color: var(--primary); display: block; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .resort-card:hover { transform: translateY(-5px); }
+        .resort-card strong { color: var(--primary); display: block; font-size: 1.3rem; margin-bottom: 0.8rem; }
 
         /* Itinerary Timeline */
         .day-block {
-            margin-bottom: 2rem;
-            padding-left: 1rem;
-            border-left: 4px solid var(--secondary);
+            margin-bottom: 2.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--primary);
+            position: relative;
+        }
+        .day-block::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
         }
         .day-title {
             font-weight: bold;
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 0.8rem;
         }
         
         /* Dining Box */
         .dining-box {
-            background-color: #fafafa;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            padding: 1rem;
-            margin-top: 0.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-top: 1rem;
         }
-        .dining-title { font-weight: bold; color: #333; display: flex; justify-content: space-between; }
+        .dining-title { font-weight: bold; color: var(--text); display: flex; justify-content: space-between; font-size: 1.1rem; }
         .diet-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
         }
-        .diet-col h5 { margin: 0 0 5px 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-        .std-menu h5 { color: var(--std-color); }
-        .veg-menu h5 { color: var(--veg-color); }
+        .diet-col {
+            background: rgba(255,255,255,0.03);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .diet-col h5 { margin: 0 0 8px 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .std-menu h5 { color: var(--std-color); text-shadow: 0 0 5px var(--std-color); }
+        .veg-menu h5 { color: var(--veg-color); text-shadow: 0 0 5px var(--veg-color); }
 
         /* Highlights */
         .badge {
             display: inline-block;
-            background: var(--accent);
+            background: linear-gradient(45deg, var(--accent), #ff5722);
             color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
+            padding: 3px 10px;
+            border-radius: 12px;
             font-size: 0.8rem;
             vertical-align: middle;
-            margin-left: 8px;
+            margin-left: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
     </style>
 </head>
@@ -149,7 +198,7 @@
     <p>Family Planning: Multi-Generational Itineraries</p>
 </header>
 
-<nav>
+<nav class="glass">
     <a href="#" onclick="showTab('bigisland', this)" class="active">Big Island</a>
     <a href="#" onclick="showTab('oahu', this)">Oahu</a>
     <a href="#" onclick="showTab('maui', this)">Maui</a>
@@ -157,17 +206,17 @@
 
 <div class="container">
 
-    <section id="bigisland" class="active">
-        <h2>The Big Island (Top Pick)</h2>
+    <section id="bigisland" class="glass active">
+        <h2>The Big Island</h2>
         <p>Best for adventure, space, and unifying "Farm-to-Table" dining. Accessible sightseeing for Grandparents, huge nature for the boys.</p>
 
         <h3>Where to Stay</h3>
         <div class="resort-grid">
-            <div class="resort-card">
+            <div class="resort-card glass">
                 <strong>Four Seasons Hualalai</strong>
                 <p>The gold standard. Villa-style rooms (great for seniors), and the "King's Pond" (swimmable lava aquarium) for the kids.</p>
             </div>
-            <div class="resort-card">
+            <div class="resort-card glass">
                 <strong>Mauna Lani (Auberge)</strong>
                 <p>Modern luxury. Calm beach cove protected from waves. Home to <em>CanoeHouse</em>, the island's best restaurant.</p>
             </div>
@@ -266,17 +315,17 @@
         </div>
     </section>
 
-    <section id="oahu">
-        <h2>Oahu (Dining Winner)</h2>
+    <section id="oahu" class="glass">
+        <h2>Oahu</h2>
         <p>Best for variety, history (Pearl Harbor), and concurrent high-end menus for mixed diets.</p>
 
         <h3>Where to Stay</h3>
         <div class="resort-grid">
-            <div class="resort-card">
+            <div class="resort-card glass">
                 <strong>Four Seasons Ko Olina</strong>
                 <p>Protected lagoons (safe swimming), removed from city noise. Near Disney Aulani for character breakfast option.</p>
             </div>
-            <div class="resort-card">
+            <div class="resort-card glass">
                 <strong>The Kahala Resort</strong>
                 <p>Iconic luxury near Waikiki but secluded. Has its own private dolphin lagoon.</p>
             </div>
@@ -356,17 +405,17 @@
         </div>
     </section>
 
-    <section id="maui">
-        <h2>Maui (Kid's Choice)</h2>
+    <section id="maui" class="glass">
+        <h2>Maui</h2>
         <p>Best for pools and whale watching. Dining requires reservations at specific accommodating venues.</p>
 
         <h3>Where to Stay</h3>
         <div class="resort-grid">
-            <div class="resort-card">
+            <div class="resort-card glass">
                 <strong>Grand Wailea</strong>
                 <p>Unbeatable pools: slides, water elevator, rapids. Very energetic.</p>
             </div>
-            <div class="resort-card">
+            <div class="resort-card glass">
                 <strong>Four Seasons Maui</strong>
                 <p>Higher service, calmer, spacious rooms. Next door to Grand Wailea.</p>
             </div>
@@ -449,19 +498,15 @@
 
 <script>
     function showTab(islandId, linkElement) {
-        // Hide all sections
         const sections = document.querySelectorAll('section');
         sections.forEach(sec => sec.classList.remove('active'));
 
-        // Show selected section
         document.getElementById(islandId).classList.add('active');
 
-        // Update Nav visual state
         const links = document.querySelectorAll('nav a');
         links.forEach(link => link.classList.remove('active'));
         linkElement.classList.add('active');
         
-        // Prevent default jump
         event.preventDefault();
         window.scrollTo(0, 0);
     }
