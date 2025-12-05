@@ -21,6 +21,8 @@
             /* Diet Colors */
             --std-color: #1565C0;
             --veg-color: #2E7D32;
+            --spa-color: #00695C; /* Teal for Spa */
+            --dining-color: #bf360c; /* Deep Orange for Dining */
         }
 
         body {
@@ -137,22 +139,66 @@
         /* Cards */
         .resort-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
         @media (max-width: 700px) { .resort-grid { grid-template-columns: 1fr; } }
 
         .card {
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.3);
             padding: 1.5rem;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
             transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
         }
-        .card:hover { transform: translateY(-3px); background: rgba(255,255,255,0.7); }
+        .card:hover { transform: translateY(-3px); background: rgba(255,255,255,0.5); }
+        .feature-tags {
+            margin-bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .feature-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--primary-dark);
+            background: rgba(255, 255, 255, 0.5);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(141, 110, 99, 0.2);
+        }
         .card-title { font-size: 1.2rem; margin-bottom: 0.5rem; display: block; }
         .card-desc { font-size: 0.95rem; color: var(--light-text); }
+/* Feature Boxes (Spa & Dining) */
+        .feature-box {
+            padding: 8px 10px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+        .box-title {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+        }
 
+        .dining-preview {
+            background: rgba(191, 54, 12, 0.08);
+            border-left: 3px solid var(--dining-color);
+        }
+        .dining-preview .box-title { color: var(--dining-color); }
+
+        .spa-box {
+            background: rgba(0, 105, 92, 0.08);
+            border-left: 3px solid var(--spa-color);
+        }
+        .spa-box .box-title { color: var(--spa-color); }
         /* Itinerary */
         .day-block {
             margin-bottom: 2.5rem;
@@ -213,14 +259,54 @@
         <p>Best for unifying your group. The spaciousness prevents crowding, and the "farm-to-table" ethos of the island naturally supports high-quality meat and vegetable dishes equally.</p>
 
         <h3>Where to Stay</h3>
-        <div class="resort-grid">
+       <div class="resort-grid">
             <div class="card">
+                <div class="feature-tags">
+                    <span class="feature-tag">Swimmable Aquarium</span>
+                    <span class="feature-tag">Bungalow Style</span>
+                </div>
                 <span class="card-title"><a href="https://www.fourseasons.com/hualalai/" target="_blank" class="link-btn">Four Seasons Hualalai <span class="icon">↗</span></a></span>
-                <p class="card-desc">The ultimate multi-gen resort. Low-rise bungalows and the "King's Pond" (carved lava aquarium) provides safe snorkeling on-site.</p>
+                <p class="card-desc">The ultimate multi-gen resort. Low-rise bungalows and the "King's Pond" (carved lava aquarium) provides safe snorkeling for kids.</p>
+                <div class="feature-box dining-preview">
+                    <span class="box-title">🍽️ On-Site Dining</span>
+                    <strong>'Ulu Ocean Grill</strong> (Seafood/Vegan), <strong>Beach Tree</strong> (Italian/Californian), <strong>Hualalai Grille</strong> (Steak).
+                </div>
+                <div class="feature-box spa-box">
+                    <span class="box-title">🌿 Hualalai Spa</span>
+                    Open-air village setting. Famous for the "Apothecary" using fresh local ingredients.
+                </div>
             </div>
             <div class="card">
+                <div class="feature-tags">
+                    <span class="feature-tag">Modern Luxury</span>
+                    <span class="feature-tag">Calm Beach Cove</span>
+                </div>
                 <span class="card-title"><a href="https://aubergeresorts.com/maunalani/" target="_blank" class="link-btn">Mauna Lani (Auberge) <span class="icon">↗</span></a></span>
                 <p class="card-desc">Modern, open-air luxury with a protected cove beach. Home to the CanoeHouse restaurant and close to the shops for easy family strolling.</p>
+                <div class="feature-box dining-preview">
+                    <span class="box-title">🍽️ On-Site Dining</span>
+                    <strong>CanoeHouse</strong> (Fine Dining), <strong>HaLani</strong> (Open Air/Breakfast), <strong>Surf Shack</strong> (Casual).
+                </div>
+                <div class="feature-box spa-box">
+                    <span class="box-title">🌿 Auberge Spa</span>
+                    Farm-to-Spa treatments using on-site honey and 'olena (turmeric).
+                </div>
+            </div>
+            <div class="card">
+                <div class="feature-tags">
+                    <span class="feature-tag">Best Beach</span>
+                    <span class="feature-tag">Manta Point</span>
+                </div>
+                <span class="card-title"><a href="https://maunakeabeachhotel.com/" target="_blank" class="link-btn">Mauna Kea Beach Hotel <span class="icon">↗</span></a></span>
+                <p class="card-desc">Founded by Rockefeller on the island's best natural beach. A historic, architectural gem with a dedicated manta ray viewing point at night.</p>
+                <div class="feature-box dining-preview">
+                    <span class="box-title">🍽️ On-Site Dining</span>
+                    <strong>Manta</strong> (Breakfast Buffet/Jazz), <strong>Copper Bar</strong> (Tapaps/Cocktails), <strong>Hau Tree</strong> (Beachside).
+                </div>
+                <div class="feature-box spa-box">
+                    <span class="box-title">🌿 Mauna Kea Spa</span>
+                    Mandara Spa features Balinese-inspired therapy rooms opening to ocean sounds.
+                </div>
             </div>
         </div>
 
@@ -359,12 +445,52 @@
         <h3>Where to Stay</h3>
         <div class="resort-grid">
             <div class="card">
+                <div class="feature-tags">
+                    <span class="feature-tag">Quiet Lagoon</span>
+                    <span class="feature-tag">Near Disney Aulani</span>
+                </div>
                 <span class="card-title"><a href="https://www.fourseasons.com/oahu/" target="_blank" class="link-btn">Four Seasons Ko Olina <span class="icon">↗</span></a></span>
-                <p class="card-desc">Located on a tranquil, man-made lagoon perfect for kids and seniors. Adjacent to Disney Aulani if you want a character breakfast, but far enough to be quiet.</p>
+                <p class="card-desc">Located on a tranquil, man-made lagoon perfect for everyone. Adjacent to Disney Aulani if you want a character breakfast, but far enough to be quiet.</p>
+                <div class="feature-box dining-preview">
+                    <span class="box-title">🍽️ On-Site Dining</span>
+                    <strong>Mina's Fish House</strong> (Seafood), <strong>Noe</strong> (Italian/Veg-friendly), <strong>La Hiki</strong> (Breakfast).
+                </div>
+                <div class="feature-box spa-box">
+                    <span class="box-title">🌿 Naupaka Spa</span>
+                    A massive 35,000 sq ft sanctuary with outdoor hydrotherapy gardens and steam/sauna.
+                </div>
             </div>
             <div class="card">
+                <div class="feature-tags">
+                    <span class="feature-tag">Dolphin Lagoon</span>
+                    <span class="feature-tag">Secluded Luxury</span>
+                </div>
                 <span class="card-title"><a href="https://www.kahalaresort.com/" target="_blank" class="link-btn">The Kahala Resort <span class="icon">↗</span></a></span>
                 <p class="card-desc">A legendary luxury hotel secluded on the other side of Diamond Head. Famous for its private dolphin lagoon which provides daily entertainment for children.</p>
+                <div class="feature-box dining-preview">
+                    <span class="box-title">🍽️ On-Site Dining</span>
+                    <strong>Hoku's</strong> (Global Fusion), <strong>Plumeria Beach House</strong> (Buffet), <strong>Arancino</strong> (Italian).
+                </div>
+                <div class="feature-box spa-box">
+                    <span class="box-title">🌿 The Kahala Spa</span>
+                    Features 9 private spa suites where every treatment includes a personal relaxation area.
+                </div>
+            </div>
+            <div class="card">
+                <div class="feature-tags">
+                    <span class="feature-tag">In Waikiki</span>
+                    <span class="feature-tag">Iconic Orchid Pool</span>
+                </div>
+                <span class="card-title"><a href="https://www.halekulani.com/" target="_blank" class="link-btn">Halekulani <span class="icon">↗</span></a></span>
+                <p class="card-desc">The "House Befitting Heaven." An oasis of silence right in the heart of Waikiki. Perfect if the family wants access to city shopping and dining.</p>
+                <div class="feature-box dining-preview">
+                    <span class="box-title">🍽️ On-Site Dining</span>
+                    <strong>La Mer</strong> (French), <strong>Orchids</strong> (Seafood/Views), <strong>House Without A Key</strong> (Casual).
+                </div>
+                <div class="feature-box spa-box">
+                    <span class="box-title">🌿 SpaHalekulani</span>
+                    Famous for their "Feet First" philosophy where every treatment begins with a foot pounding.
+                </div>
             </div>
         </div>
 
@@ -503,12 +629,52 @@
         <h3>Where to Stay</h3>
         <div class="resort-grid">
             <div class="card">
+                <div class="feature-tags">
+                    <span class="feature-tag">Epic Slides</span>
+                    <span class="feature-tag">Best for Kids</span>
+                </div>
                 <span class="card-title"><a href="https://www.grandwailea.com/" target="_blank" class="link-btn">Grand Wailea <span class="icon">↗</span></a></span>
                 <p class="card-desc">The "Disney World" of Hawaii pools. Waterslides, a water elevator, rapids, and ropes. It is high energy and busy, which the boys will love.</p>
+                <div class="feature-box dining-preview">
+                    <span class="box-title">🍽️ On-Site Dining</span>
+                    <strong>Humuhumunukunukuapua'a</strong> (Seafood), <strong>Olivine</strong> (Coastal Italian), <strong>Botero Lounge</strong>.
+                </div>
+                <div class="feature-box spa-box">
+                    <span class="box-title">🌿 Kilolani Spa</span>
+                    The largest spa in Hawaii (50,000 sq ft). Famous for its Hydrotherapy Termé Circuit and Roman baths.
+                </div>
             </div>
             <div class="card">
+                <div class="feature-tags">
+                    <span class="feature-tag">Top Service</span>
+                    <span class="feature-tag">Adult Pools</span>
+                </div>
                 <span class="card-title"><a href="https://www.fourseasons.com/maui/" target="_blank" class="link-btn">Four Seasons Maui <span class="icon">↗</span></a></span>
                 <p class="card-desc">Located right next door. Higher service level, calmer adult pools, and spacious rooms. You can walk to Grand Wailea if needed.</p>
+                <div class="feature-box dining-preview">
+                    <span class="box-title">🍽️ On-Site Dining</span>
+                    <strong>Spago</strong> (Wolfgang Puck/Fusion), <strong>DUO</strong> (Steak/Seafood), <strong>Ferraro's</strong> (Italian).
+                </div>
+                <div class="feature-box spa-box">
+                    <span class="box-title">🌿 The Spa</span>
+                    Offers oceanside thatched-roof hales (huts) for massages and advanced medical-grade wellness treatments.
+                </div>
+            </div>
+            <div class="card">
+                <div class="feature-tags">
+                    <span class="feature-tag">All-Suite</span>
+                    <span class="feature-tag">White Villas</span>
+                </div>
+                <span class="card-title"><a href="https://www.fairmont-kea-lani.com/" target="_blank" class="link-btn">Fairmont Kea Lani <span class="icon">↗</span></a></span>
+                <p class="card-desc">An all-suite and villa luxury resort. Offers significantly more space for large families. Iconic whitewashed architecture and great pools.</p>
+                <div class="feature-box dining-preview">
+                    <span class="box-title">🍽️ On-Site Dining</span>
+                    <strong>Ko</strong> (Plantation Era/Family Style), <strong>Nick's Fishmarket</strong> (Classic Seafood).
+                </div>
+                <div class="feature-box spa-box">
+                    <span class="box-title">🌿 Willow Stream Spa</span>
+                    Voted Hawaii's Top Hotel Spa. Features the "palolo" (mud) bar and experiential rain showers.
+                </div>
             </div>
         </div>
 
