@@ -6,17 +6,21 @@
     <title>Family Christmas 2026: Hawaii Plan</title>
     <style>
         :root {
-            --primary: #00BCD4; /* Cyan/Teal */
-            --secondary: rgba(255, 255, 255, 0.1); /* Glass effect */
-            --accent: #FF9800; /* Orange */
-            --bg-dark: #121212;
-            --text: #E0E0E0;
-            --light-text: #B0B0B0;
-            --veg-color: #81C784; /* Light Green */
-            --std-color: #64B5F6; /* Light Blue */
-            --glass-bg: rgba(30, 30, 30, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            /* Palette: Sandy Beige & Warm Earth Tones */
+            --primary: #8D6E63; /* Warm Earth */
+            --primary-dark: #5D4037;
+            --accent: #FF7043; /* Coral for highlights */
+            
+            --text: #3E2723; /* Dark Brown for readability */
+            --light-text: #5D4037;
+            
+            --veg-color: #388E3C; /* Green */
+            --std-color: #1976D2; /* Blue */
+            
+            /* Glass Settings */
+            --glass-bg: rgba(255, 252, 245, 0.75); /* Warm Beige Transparency */
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --shadow: 0 8px 32px 0 rgba(62, 39, 35, 0.15);
         }
 
         body {
@@ -25,15 +29,17 @@
             color: var(--text);
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, #1a1a1a, #2c3e50);
+            /* Hawaii Background Image */
+            background: url('https://images.unsplash.com/photo-1542259698-b7abc3176598?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
         }
 
-        /* Glassmorphism Base */
+        /* Glassmorphism Class */
         .glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
             border-radius: 16px;
@@ -41,18 +47,23 @@
 
         /* Hero Section */
         header {
-            background: transparent;
             padding: 4rem 1rem;
             text-align: center;
         }
         header h1 { 
             margin: 0; 
-            font-size: 3rem; 
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem; 
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            font-weight: 300;
         }
-        header p { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; color: var(--light-text); }
+        header p { 
+            font-size: 1.3rem; 
+            color: #fff; 
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            margin-top: 10px; 
+            font-weight: 400;
+        }
 
         /* Navigation */
         nav {
@@ -68,16 +79,18 @@
         nav a {
             padding: 0.8rem 2rem;
             text-decoration: none;
-            color: var(--light-text);
+            color: var(--text);
             font-weight: bold;
             transition: 0.3s;
             border-radius: 12px;
             margin: 0 5px;
+            opacity: 0.8;
         }
         nav a:hover, nav a.active {
-            color: var(--text);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 0 10px rgba(0,255,255,0.1);
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.5);
+            color: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         /* Container */
@@ -103,13 +116,26 @@
         }
 
         h2 { 
-            border-bottom: 1px solid var(--glass-border); 
+            border-bottom: 2px solid rgba(141, 110, 99, 0.2); 
             padding-bottom: 15px; 
-            color: var(--primary); 
+            color: var(--primary-dark); 
             font-size: 2rem;
+            margin-top: 0;
         }
-        h3 { color: var(--light-text); margin-top: 2rem; font-size: 1.4rem; }
-        p, li { color: var(--light-text); }
+        h3 { color: var(--primary); margin-top: 2rem; font-size: 1.4rem; }
+        
+        /* Links */
+        a.place-link {
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--primary);
+            transition: color 0.2s;
+        }
+        a.place-link:hover {
+            color: var(--accent);
+            border-bottom: 1px solid var(--accent);
+        }
+        .external-icon { font-size: 0.8em; margin-left: 4px; opacity: 0.6; }
 
         /* Resort Cards */
         .resort-grid {
@@ -122,10 +148,13 @@
         
         .resort-card {
             padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
             transition: transform 0.3s;
         }
-        .resort-card:hover { transform: translateY(-5px); }
-        .resort-card strong { color: var(--primary); display: block; font-size: 1.3rem; margin-bottom: 0.8rem; }
+        .resort-card:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.6); }
+        .resort-card strong { display: block; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .resort-card p { font-size: 0.95rem; margin: 0; opacity: 0.9; }
 
         /* Itinerary Timeline */
         .day-block {
@@ -143,51 +172,58 @@
             height: 15px;
             background: var(--primary);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid #fff;
         }
         .day-title {
             font-weight: bold;
-            font-size: 1.3rem;
-            color: var(--text);
-            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
         }
+        .day-desc { font-size: 0.95rem; margin-bottom: 1rem; }
         
         /* Dining Box */
         .dining-box {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.5);
             border-radius: 12px;
             padding: 1.2rem;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
         }
-        .dining-title { font-weight: bold; color: var(--text); display: flex; justify-content: space-between; font-size: 1.1rem; }
+        .dining-title { 
+            font-weight: bold; 
+            color: var(--text); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            font-size: 1.1rem; 
+        }
         .diet-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
             margin-top: 1rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         .diet-col {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.4);
             padding: 10px;
             border-radius: 8px;
         }
-        .diet-col h5 { margin: 0 0 8px 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-        .std-menu h5 { color: var(--std-color); text-shadow: 0 0 5px var(--std-color); }
-        .veg-menu h5 { color: var(--veg-color); text-shadow: 0 0 5px var(--veg-color); }
+        .diet-col h5 { margin: 0 0 5px 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .std-menu h5 { color: var(--std-color); }
+        .veg-menu h5 { color: var(--veg-color); }
 
         /* Highlights */
         .badge {
             display: inline-block;
-            background: linear-gradient(45deg, var(--accent), #ff5722);
+            background: var(--accent);
             color: white;
             padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
             vertical-align: middle;
             margin-left: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-weight: bold;
         }
     </style>
 </head>
@@ -195,7 +231,7 @@
 
 <header>
     <h1>Hawaii Christmas 2026</h1>
-    <p>Itinerary options for Maui, Oahu and Big Island</p>
+    <p>Multi-Generational Family Trip Plan</p>
 </header>
 
 <nav class="glass">
@@ -207,18 +243,18 @@
 <div class="container">
 
     <section id="bigisland" class="glass active">
-        <h2>The Big Island</h2>
-        <p>Best for adventure, space, and unifying "Farm-to-Table" dining. Accessible sightseeing for Grandparents, huge nature for the boys.</p>
+        <h2>The Big Island (Top Pick)</h2>
+        <p>Offers the most space for a large group. The sightseeing (Volcanoes, Waterfalls) is very accessible for grandparents (drive-up views), while the active boys have endless space.</p>
 
         <h3>Where to Stay</h3>
         <div class="resort-grid">
-            <div class="resort-card glass">
-                <strong>Four Seasons Hualalai</strong>
-                <p>The gold standard. Villa-style rooms (great for seniors), and the "King's Pond" (swimmable lava aquarium) for the kids.</p>
+            <div class="resort-card">
+                <strong><a href="https://www.fourseasons.com/hualalai/" target="_blank" class="place-link">Four Seasons Hualalai <span class="external-icon">↗</span></a></strong>
+                <p>The ultimate family luxury resort. Features the "King's Pond" (swimmable aquarium) and low-rise bungalows perfect for seniors.</p>
             </div>
-            <div class="resort-card glass">
-                <strong>Mauna Lani (Auberge)</strong>
-                <p>Modern luxury. Calm beach cove protected from waves. Home to <em>CanoeHouse</em>, the island's best restaurant.</p>
+            <div class="resort-card">
+                <strong><a href="https://aubergeresorts.com/maunalani/" target="_blank" class="place-link">Mauna Lani (Auberge) <span class="external-icon">↗</span></a></strong>
+                <p>Modern luxury with a protected beach cove. Home to the island's best restaurant (CanoeHouse) and cultural activities.</p>
             </div>
         </div>
 
@@ -226,17 +262,19 @@
 
         <div class="day-block">
             <div class="day-title">Day 1: Arrival & Lava Pools</div>
-            <p>Settle in. Boys snorkel in the resort lagoon; Grandparents relax on the lanai.</p>
+            <p class="day-desc">Settle in. Boys snorkel in the resort lagoon; Grandparents relax on the lanai.</p>
             <div class="dining-box">
-                <div class="dining-title">'Ulu Ocean Grill (On-site)</div>
+                <div class="dining-title">
+                    <a href="https://www.fourseasons.com/hualalai/dining/restaurants/ulu_ocean_grill/" target="_blank" class="place-link">'Ulu Ocean Grill (On-site)</a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
-                        <p>Fresh Catch (Ono, Mahimahi) or Grilled Steaks.</p>
+                        <p>Charcoal grilled Ahi or Kona Kanpachi.</p>
                     </div>
                     <div class="diet-col veg-menu">
                         <h5>Vegetarian</h5>
-                        <p>Dedicated Vegan menu (e.g., Roasted Hearts of Palm, Tofu Curry).</p>
+                        <p>Dedicated vegan menu (e.g., Roasted Hearts of Palm, Tofu Curry).</p>
                     </div>
                 </div>
             </div>
@@ -244,17 +282,19 @@
 
         <div class="day-block">
             <div class="day-title">Day 2: Volcano National Park</div>
-            <p><strong>Grandparents:</strong> Accessible views at Steam Vents/Overlook. <strong>Boys:</strong> Hike Thurston Lava Tube.</p>
+            <p class="day-desc">Visit <a href="https://www.nps.gov/havo/index.htm" target="_blank" class="place-link">Hawaii Volcanoes National Park</a>. Grandparents use accessible lookouts; Boys hike the Lava Tube.</p>
             <div class="dining-box">
-                <div class="dining-title">Kilauea Lodge</div>
+                <div class="dining-title">
+                    <a href="https://www.kilauealodge.com/restaurant" target="_blank" class="place-link">Kilauea Lodge</a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
-                        <p>Duck, Lamb, or Catch of the Day.</p>
+                        <p>Antelope, Duck, or Catch of the Day.</p>
                     </div>
                     <div class="diet-col veg-menu">
                         <h5>Vegetarian</h5>
-                        <p>Vegetable Napoleon or custom pasta (accommodating kitchen).</p>
+                        <p>Vegetable Napoleon or Portobello Wellington.</p>
                     </div>
                 </div>
             </div>
@@ -262,17 +302,19 @@
 
         <div class="day-block">
             <div class="day-title">Day 3: Mantas & Beach</div>
-            <p>Morning at Hapuna Beach. Evening <strong>Manta Ray Night Snorkel</strong> (Boat ride for everyone, snorkel for boys).</p>
+            <p class="day-desc">Day at Hapuna Beach. Evening <strong>Manta Ray Night Snorkel</strong> (Bucket list item for the boys).</p>
             <div class="dining-box">
-                <div class="dining-title">Merriman’s Waimea</div>
+                <div class="dining-title">
+                    <a href="https://www.merrimanshawaii.com/waimea/" target="_blank" class="place-link">Merriman’s Waimea</a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
-                        <p>Mac Nut Crusted Fish, Prime Steak.</p>
+                        <p>Lamb chops or Prime NY Steak.</p>
                     </div>
                     <div class="diet-col veg-menu">
                         <h5>Vegetarian</h5>
-                        <p>Famous "Dirt Grown" Vegetables, Taro Hummus, Falafel.</p>
+                        <p>Taro Hummus, Falafel, and "Dirt Grown" Green Salads.</p>
                     </div>
                 </div>
             </div>
@@ -280,17 +322,19 @@
 
         <div class="day-block">
             <div class="day-title">Day 4: Waimea Cowboys</div>
-            <p>Horseback riding for kids; Parker Ranch history for seniors.</p>
+            <p class="day-desc">Visit Parker Ranch country. Horseback riding for kids; historic homes for seniors.</p>
             <div class="dining-box">
-                <div class="dining-title">CanoeHouse <span class="badge">Highlight</span></div>
+                <div class="dining-title">
+                    <a href="https://aubergeresorts.com/maunalani/dining/canoehouse/" target="_blank" class="place-link">CanoeHouse <span class="badge">Highlight</span></a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
-                        <p>Grilled Kona Lobster, Wagyu Beef.</p>
+                        <p>Grilled Kona Lobster and Wagyu Beef.</p>
                     </div>
                     <div class="diet-col veg-menu">
                         <h5>Vegetarian</h5>
-                        <p>Separate "MY" Menu (Plant-Based), e.g., Corn Ribs, Grilled Mushrooms.</p>
+                        <p>Separate "MY" (Plant-Based) Menu with grilled specialty veg.</p>
                     </div>
                 </div>
             </div>
@@ -298,13 +342,15 @@
 
         <div class="day-block">
             <div class="day-title">Day 5: Waterfalls</div>
-            <p>Drive Hamakua Coast. Akaka Falls or Rainbow Falls (Drive-up view).</p>
+            <p class="day-desc">Drive the Hamakua Coast. See Akaka Falls or Rainbow Falls (easy access).</p>
             <div class="dining-box">
-                <div class="dining-title">Lava Lava Beach Club (Casual)</div>
+                <div class="dining-title">
+                    <a href="https://lavalavabeachclub.com/bigisland/" target="_blank" class="place-link">Lava Lava Beach Club</a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
-                        <p>Ribs, Burgers, Fish Tacos.</p>
+                        <p>Ribs, Burgers, Fish Tacos (Toes in sand).</p>
                     </div>
                     <div class="diet-col veg-menu">
                         <h5>Vegetarian</h5>
@@ -316,18 +362,18 @@
     </section>
 
     <section id="oahu" class="glass">
-        <h2>Oahu</h2>
-        <p>Best for variety, history (Pearl Harbor), and concurrent high-end menus for mixed diets.</p>
+        <h2>Oahu (Dining Winner)</h2>
+        <p>Highest density of restaurants offering concurrent high-end vegan and non-vegan menus. Accessible history at Pearl Harbor.</p>
 
         <h3>Where to Stay</h3>
         <div class="resort-grid">
-            <div class="resort-card glass">
-                <strong>Four Seasons Ko Olina</strong>
-                <p>Protected lagoons (safe swimming), removed from city noise. Near Disney Aulani for character breakfast option.</p>
+            <div class="resort-card">
+                <strong><a href="https://www.fourseasons.com/oahu/" target="_blank" class="place-link">Four Seasons Ko Olina <span class="external-icon">↗</span></a></strong>
+                <p>Located on a calm lagoon (safe for kids). Luxury quiet, but walkable to Disney Aulani for character breakfasts.</p>
             </div>
-            <div class="resort-card glass">
-                <strong>The Kahala Resort</strong>
-                <p>Iconic luxury near Waikiki but secluded. Has its own private dolphin lagoon.</p>
+            <div class="resort-card">
+                <strong><a href="https://www.kahalaresort.com/" target="_blank" class="place-link">The Kahala Resort <span class="external-icon">↗</span></a></strong>
+                <p>Secluded luxury near Waikiki. Famous for its private dolphin lagoon which the kids will love.</p>
             </div>
         </div>
 
@@ -336,15 +382,17 @@
         <div class="day-block">
             <div class="day-title">Day 1: Arrival</div>
             <div class="dining-box">
-                <div class="dining-title">Mina’s Fish House</div>
+                <div class="dining-title">
+                    <a href="https://www.fourseasons.com/oahu/dining/restaurants/minas_fish_house/" target="_blank" class="place-link">Mina’s Fish House</a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
-                        <p>Ginger Scallion Whole Fish, Seafood Tower.</p>
+                        <p>Ginger Scallion Whole Fish (Spectacular presentation).</p>
                     </div>
                     <div class="diet-col veg-menu">
                         <h5>Vegetarian</h5>
-                        <p>Vegetable Curry, custom Veggie Cakes (Chef is excellent).</p>
+                        <p>Vegetable Red Curry or custom Veggie Cakes.</p>
                     </div>
                 </div>
             </div>
@@ -352,9 +400,11 @@
 
         <div class="day-block">
             <div class="day-title">Day 2: Pearl Harbor</div>
-            <p>USS Arizona (Accessible). Boys can add Submarine tour.</p>
+            <p class="day-desc">Visit <a href="https://www.nps.gov/valr/index.htm" target="_blank" class="place-link">USS Arizona Memorial</a>. Fully accessible. Boys can add Submarine tour.</p>
             <div class="dining-box">
-                <div class="dining-title">Nature Waikiki <span class="badge">Top Pick</span></div>
+                <div class="dining-title">
+                    <a href="https://www.naturewaikiki.com/" target="_blank" class="place-link">Nature Waikiki <span class="badge">Top Pick</span></a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
@@ -362,25 +412,27 @@
                     </div>
                     <div class="diet-col veg-menu">
                         <h5>Vegetarian</h5>
-                        <p>Parallel Plant-Based Tasting Menu (Same timing/courses).</p>
+                        <p>Plant-Based Tasting Menu (Same timing/courses).</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="day-block">
-            <div class="day-title">Day 3: Jurassic Valley (Kualoa)</div>
-            <p><strong>Active:</strong> UTV Raptor Tour. <strong>Grandparents:</strong> Movie Sites Bus Tour.</p>
+            <div class="day-title">Day 3: Jurassic Valley</div>
+            <p class="day-desc">Visit <a href="https://www.kualoa.com/" target="_blank" class="place-link">Kualoa Ranch</a>. UTV Raptors for the active; Bus tour for grandparents.</p>
             <div class="dining-box">
-                <div class="dining-title">Noe (Italian)</div>
+                <div class="dining-title">
+                    <a href="https://www.fourseasons.com/oahu/dining/restaurants/noe/" target="_blank" class="place-link">Noe (Italian)</a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
-                        <p>Veal Tagliatelle, Whipped Ricotta.</p>
+                        <p>Truffle Tagliatelle with Veal.</p>
                     </div>
                     <div class="diet-col veg-menu">
                         <h5>Vegetarian</h5>
-                        <p>Egg-free pasta w/ Marinara & Garden Veg.</p>
+                        <p>Egg-free pasta with Marinara/Vegetables.</p>
                     </div>
                 </div>
             </div>
@@ -388,9 +440,11 @@
 
         <div class="day-block">
             <div class="day-title">Day 4: North Shore</div>
-            <p>Pipeline waves & Waimea Valley botanical walk.</p>
+            <p class="day-desc">Watch surfers at Pipeline. Walk through Waimea Valley botanical gardens.</p>
             <div class="dining-box">
-                <div class="dining-title">Tane Vegan Izakaya</div>
+                <div class="dining-title">
+                    <a href="https://www.tanevegan.com/" target="_blank" class="place-link">Tane Vegan Izakaya</a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
@@ -406,27 +460,29 @@
     </section>
 
     <section id="maui" class="glass">
-        <h2>Maui</h2>
-        <p>Best for pools and whale watching. Dining requires reservations at specific accommodating venues.</p>
+        <h2>Maui (Kid's Choice)</h2>
+        <p>Unbeatable pools for the boys and whale watching. Dining requires careful reservations at specific venues.</p>
 
         <h3>Where to Stay</h3>
         <div class="resort-grid">
-            <div class="resort-card glass">
-                <strong>Grand Wailea</strong>
-                <p>Unbeatable pools: slides, water elevator, rapids. Very energetic.</p>
+            <div class="resort-card">
+                <strong><a href="https://www.grandwailea.com/" target="_blank" class="place-link">Grand Wailea <span class="external-icon">↗</span></a></strong>
+                <p>Legendary pool system: water elevator, rapids, ropes. High energy.</p>
             </div>
-            <div class="resort-card glass">
-                <strong>Four Seasons Maui</strong>
-                <p>Higher service, calmer, spacious rooms. Next door to Grand Wailea.</p>
+            <div class="resort-card">
+                <strong><a href="https://www.fourseasons.com/maui/" target="_blank" class="place-link">Four Seasons Maui <span class="external-icon">↗</span></a></strong>
+                <p>Located next door. Higher service level, calmer adult pools, spacious rooms.</p>
             </div>
         </div>
 
         <h3>7-Day Itinerary</h3>
 
         <div class="day-block">
-            <div class="day-title">Day 1: Arrival</div>
+            <div class="day-title">Day 1: Arrival & Pools</div>
             <div class="dining-box">
-                <div class="dining-title">Humuhumunukunukuapua'a</div>
+                <div class="dining-title">
+                    <a href="https://www.grandwailea.com/dine/humuhumunukunukuapuaa" target="_blank" class="place-link">Humuhumunukunukuapua'a</a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
@@ -442,9 +498,11 @@
 
         <div class="day-block">
             <div class="day-title">Day 2: Whale Watching</div>
-            <p>Catamaran cruise from Ma’alaea Harbor.</p>
+            <p class="day-desc">December is peak whale season. Book a catamaran from Ma’alaea Harbor.</p>
             <div class="dining-box">
-                <div class="dining-title">Star Noodle / Mala Tavern</div>
+                <div class="dining-title">
+                    <a href="https://www.starnoodle.com/" target="_blank" class="place-link">Star Noodle</a> / <a href="https://malaoceantavern.com/" target="_blank" class="place-link">Mala Tavern</a>
+                </div>
                 <div class="diet-grid">
                     <div class="diet-col std-menu">
                         <h5>Standard Menu</h5>
@@ -460,6 +518,7 @@
 
         <div class="day-block">
             <div class="day-title">Day 3: Upcountry Farm Lunch</div>
+            <p class="day-desc">Visit <a href="https://www.oofarm.com/" target="_blank" class="place-link">O’o Farm</a> for a tour and gourmet lunch.</p>
             <div class="dining-box">
                 <div class="dining-title">O’o Farm Lunch Tour</div>
                 <div class="diet-grid">
@@ -477,7 +536,7 @@
 
         <div class="day-block">
             <div class="day-title">Day 4: The Luau</div>
-            <p><strong>Feast at Lele:</strong> A sit-down 5-course meal (not a buffet).</p>
+            <p class="day-desc">A sit-down 5-course meal (not a buffet) at <a href="https://www.feastatlele.com/" target="_blank" class="place-link">Feast at Lele</a>.</p>
             <div class="dining-box">
                 <div class="dining-title">Feast at Lele</div>
                 <div class="diet-grid">
