@@ -53,24 +53,24 @@
             box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.08);
         }
 
-        /* Tab Active State */
-        .tab-btn {
+        /* Tab Active States */
+        .tab-btn, .sub-tab-btn {
             transition: all 0.3s ease;
         }
         .tab-active {
             background: rgba(255, 255, 255, 0.9) !important;
-            color: #2563eb !important; /* blue-600 */
+            color: #2563eb !important; 
             font-weight: 700;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         
         /* Hide content sections by default */
-        .tab-content {
+        .tab-content, .sub-tab-content {
             display: none;
             animation: fadeIn 0.4s ease-in-out;
         }
-        .tab-content.active {
-            display: block;
+        .active {
+            display: block !important;
         }
 
         @keyframes fadeIn {
@@ -87,20 +87,22 @@
     </header>
 
     <nav class="sticky top-6 z-50 mx-4 md:mx-auto max-w-fit glass-nav rounded-full px-2 py-2 mb-12 flex space-x-2 overflow-x-auto">
-        <button class="tab-btn tab-active px-5 py-2.5 rounded-full text-sm md:text-base font-semibold text-slate-700 hover:bg-white/50" onclick="openTab('gaeta', this)">🏖️ Gaeta</button>
-        <button class="tab-btn px-5 py-2.5 rounded-full text-sm md:text-base font-semibold text-slate-700 hover:bg-white/50" onclick="openTab('stresa', this)">🛥️ Stresa</button>
-        <button class="tab-btn px-5 py-2.5 rounded-full text-sm md:text-base font-semibold text-slate-700 hover:bg-white/50" onclick="openTab('thun', this)">🏔️ Thun</button>
-        <button class="tab-btn px-5 py-2.5 rounded-full text-sm md:text-base font-semibold text-slate-700 hover:bg-white/50" onclick="openTab('geneva', this)">✈️ Geneva</button>
+        <button class="tab-btn tab-active px-5 py-2.5 rounded-full text-sm md:text-base font-semibold text-slate-700 hover:bg-white/50 whitespace-nowrap" onclick="openTab('gaeta', this)">🏖️ Gaeta</button>
+        <button class="tab-btn px-5 py-2.5 rounded-full text-sm md:text-base font-semibold text-slate-700 hover:bg-white/50 whitespace-nowrap" onclick="openTab('stresa', this)">🛥️ Stresa</button>
+        <button class="tab-btn px-5 py-2.5 rounded-full text-sm md:text-base font-semibold text-slate-700 hover:bg-white/50 whitespace-nowrap" onclick="openTab('thun', this)">🏔️ Thun</button>
+        <button class="tab-btn px-5 py-2.5 rounded-full text-sm md:text-base font-semibold text-slate-700 hover:bg-white/50 whitespace-nowrap" onclick="openTab('geneva', this)">✈️ Geneva</button>
+        <div class="w-px h-8 bg-slate-300 mx-2 self-center"></div>
+        <button class="tab-btn px-5 py-2.5 rounded-full text-sm md:text-base font-semibold text-slate-700 hover:bg-white/50 whitespace-nowrap" onclick="openTab('restaurants', this)">🍽️ Restaurants</button>
+        <button class="tab-btn px-5 py-2.5 rounded-full text-sm md:text-base font-semibold text-slate-700 hover:bg-white/50 whitespace-nowrap" onclick="openTab('activities', this)">🎟️ Activities</button>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-4 sm:px-6">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6">
 
         <section id="gaeta" class="tab-content active glass-panel p-6 md:p-10">
             <div class="mb-8">
                 <h2 class="text-3xl font-bold text-slate-800 mb-2">The Italian South: Gaeta</h2>
                 <p class="text-slate-600 font-medium">June 4 – June 8 • 5 Nights</p>
             </div>
-
             <div class="glass-card p-6 flex flex-col md:flex-row gap-6 mb-10 items-center">
                 <div class="md:w-1/3 w-full">
                     <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wide mb-3">Basecamp 1</span>
@@ -110,229 +112,300 @@
                 </div>
                 <div class="md:w-2/3 w-full pl-0 md:pl-6 md:border-l border-white/50">
                     <p class="text-slate-700 text-sm leading-relaxed mb-4">A spacious, bright top-floor apartment with an elevator, overlooking the Gulf of Gaeta. Located on Via Cavour, it sits in one of the most prestigious areas of the city, giving you immediate access to Serapo beach, the old city, and the Via Indipendenza seafront.</p>
-                    <div class="flex gap-4">
-                        <div class="bg-white/50 px-4 py-2 rounded-lg text-xs font-semibold text-slate-700">📶 Wi-Fi Included</div>
-                        <div class="bg-white/50 px-4 py-2 rounded-lg text-xs font-semibold text-slate-700">🧊 3 AC Units</div>
-                    </div>
                 </div>
             </div>
-
             <h3 class="text-xl font-bold text-slate-800 mb-6 border-b border-white/40 pb-2">Daily Itinerary</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass-card p-5 border-l-4 border-l-blue-500">
-                    <p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Wed, Jun 4 • Day 1</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">The Arrival</h4>
-                    <p class="text-sm text-slate-600 mb-4">Land NAP 18:00. Taxi to Napoli Centrale, catch the 20:31 InterCity train to Formia. Taxi to Gaeta Airbnb.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Dinner</p>
-                        <p class="text-sm font-bold text-slate-800">Pizzeria del Porto <span class="font-normal text-slate-600">(Veg Pizza)</span></p>
-                    </div>
-                </div>
-                <div class="glass-card p-5 border-l-4 border-l-blue-500">
-                    <p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Thu, Jun 5 • Day 2</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Serapo Beach</h4>
-                    <p class="text-sm text-slate-600 mb-4">Morning at Serapo Beach. Evening passeggiata (stroll) through town and relaxing evening at home.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Lunch / Dinner</p>
-                        <p class="text-sm font-bold text-slate-800">Veggie Tiella (Kiosk) / Airbnb Pasta</p>
-                    </div>
-                </div>
-                <div class="glass-card p-5 border-l-4 border-l-blue-500">
-                    <p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Fri, Jun 6 • Day 3</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Boat Tour</h4>
-                    <p class="text-sm text-slate-600 mb-4">09:30-13:30 Gaeta-Sperlonga 4h boat tour. Swim the grottoes, followed by afternoon beach time.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Lunch</p>
-                        <p class="text-sm font-bold text-slate-800">Magie dei Sapori <span class="font-normal text-slate-600">(Veg Pasta)</span></p>
-                    </div>
-                </div>
-                <div class="glass-card p-5 border-l-4 border-l-blue-500">
-                    <p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Sat, Jun 7 • Day 4</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Split Mountain & Shopping</h4>
-                    <p class="text-sm text-slate-600 mb-4">Morning hike at Montagna Spaccata. Afternoon boutique shopping at Piazza Traniello (Acqua di Gaeta).</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Treats</p>
-                        <p class="text-sm font-bold text-slate-800">Gelato at Il Pinguino</p>
-                    </div>
-                </div>
-                <div class="glass-card p-5 border-l-4 border-l-blue-500 md:col-span-2">
-                    <p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Sun, Jun 8 • Day 5</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Pure Relax</h4>
-                    <p class="text-sm text-slate-600">Full beach day. Rent a pedalò, enjoy the Italian sun, and empty the fridge for a family dinner at the Airbnb before tomorrow's big travel day.</p>
-                </div>
+                <div class="glass-card p-5 border-l-4 border-l-blue-500"><p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Wed, Jun 4 • Day 1</p><h4 class="text-lg font-bold text-slate-800 mb-2">The Arrival</h4><p class="text-sm text-slate-600">Land NAP 18:00. Taxi to Napoli Centrale, catch the 20:31 InterCity train to Formia. Taxi to Gaeta Airbnb.</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-blue-500"><p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Thu, Jun 5 • Day 2</p><h4 class="text-lg font-bold text-slate-800 mb-2">Serapo Beach</h4><p class="text-sm text-slate-600">Morning at Serapo Beach. Evening passeggiata (stroll) through town and relaxing evening at home.</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-blue-500"><p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Fri, Jun 6 • Day 3</p><h4 class="text-lg font-bold text-slate-800 mb-2">Boat Tour</h4><p class="text-sm text-slate-600">09:30-13:30 Gaeta-Sperlonga 4h boat tour. Swim the grottoes, followed by afternoon beach time.</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-blue-500"><p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Sat, Jun 7 • Day 4</p><h4 class="text-lg font-bold text-slate-800 mb-2">Split Mountain & Shopping</h4><p class="text-sm text-slate-600">Morning hike at Montagna Spaccata. Afternoon boutique shopping at Piazza Traniello (Acqua di Gaeta).</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-blue-500 md:col-span-2"><p class="text-xs font-bold text-blue-600 uppercase tracking-wide">Sun, Jun 8 • Day 5</p><h4 class="text-lg font-bold text-slate-800 mb-2">Pure Relax</h4><p class="text-sm text-slate-600">Full beach day. Rent a pedalò, enjoy the Italian sun, and empty the fridge for a family dinner at the Airbnb.</p></div>
             </div>
         </section>
-
 
         <section id="stresa" class="tab-content glass-panel p-6 md:p-10">
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-slate-800 mb-2">The Grand Lakes: Stresa</h2>
-                <p class="text-slate-600 font-medium">June 9 – June 12 • 4 Nights</p>
-            </div>
-
+            <div class="mb-8"><h2 class="text-3xl font-bold text-slate-800 mb-2">The Grand Lakes: Stresa</h2><p class="text-slate-600 font-medium">June 9 – June 12 • 4 Nights</p></div>
             <div class="glass-card p-6 flex flex-col md:flex-row gap-6 mb-10 items-center">
-                <div class="md:w-1/3 w-full">
-                    <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold uppercase tracking-wide mb-3">Basecamp 2</span>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-1">Palazzo 38 Lungolago</h3>
-                    <p class="text-slate-500 text-sm font-medium mb-4">2 Bedrooms • 1 Bath • Lake Views</p>
-                    <a href="https://www.airbnb.com/rooms/1467947709015615224" target="_blank" class="inline-block w-full text-center bg-indigo-600/90 backdrop-blur-sm hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-xl transition shadow-md">View Airbnb ↗</a>
-                </div>
-                <div class="md:w-2/3 w-full pl-0 md:pl-6 md:border-l border-white/50">
-                    <p class="text-slate-700 text-sm leading-relaxed mb-4">In the heart of Stresa, directly overlooking the picturesque lakefront. Renovated in 2025, offering a refined atmosphere right across from the Borromean ferry dock.</p>
-                    <div class="flex gap-4">
-                        <div class="bg-white/50 px-4 py-2 rounded-lg text-xs font-semibold text-slate-700">⛴️ Ferry Access</div>
-                        <div class="bg-white/50 px-4 py-2 rounded-lg text-xs font-semibold text-slate-700">☕ Historic Core</div>
-                    </div>
-                </div>
+                <div class="md:w-1/3 w-full"><span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold uppercase tracking-wide mb-3">Basecamp 2</span><h3 class="text-2xl font-bold text-slate-800 mb-1">Palazzo 38 Lungolago</h3><p class="text-slate-500 text-sm font-medium mb-4">2 Bedrooms • 1 Bath • Lake Views</p><a href="https://www.airbnb.com/rooms/1467947709015615224" target="_blank" class="inline-block w-full text-center bg-indigo-600/90 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-xl transition shadow-md">View Airbnb ↗</a></div>
+                <div class="md:w-2/3 w-full pl-0 md:pl-6 md:border-l border-white/50"><p class="text-slate-700 text-sm leading-relaxed mb-4">In the heart of Stresa, directly overlooking the picturesque lakefront. Renovated in 2025, offering a refined atmosphere right across from the Borromean ferry dock.</p></div>
             </div>
-
-            <h3 class="text-xl font-bold text-slate-800 mb-6 border-b border-white/40 pb-2">Daily Itinerary</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass-card p-5 border-l-4 border-l-indigo-500">
-                    <p class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Mon, Jun 9 • Day 6</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Train via Rome</h4>
-                    <p class="text-sm text-slate-600 mb-4">Train to Roma Termini. Luggage storage & 3h taxi tour (Colosseum/Vatican). 15:50 Frecciarossa to Milan. Arrive Stresa ~20:36.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Dinner</p>
-                        <p class="text-sm font-bold text-slate-800">Mamma Mia <span class="font-normal text-slate-600">(Veg Pizza)</span></p>
-                    </div>
-                </div>
-                <div class="glass-card p-5 border-l-4 border-l-indigo-500">
-                    <p class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Tue, Jun 10 • Day 7</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Borromean Private Boat</h4>
-                    <p class="text-sm text-slate-600 mb-4">10:00-15:00 Private hop-on boat to Isola Bella, Pescatori, and Madre. Stroll the grand gardens and see white peacocks.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Lunch</p>
-                        <p class="text-sm font-bold text-slate-800">Isola Pescatori <span class="font-normal text-slate-600">(Fishless Veg Options)</span></p>
-                    </div>
-                </div>
-                <div class="glass-card p-5 border-l-4 border-l-indigo-500">
-                    <p class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Wed, Jun 11 • Day 8</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Mottarone Guided</h4>
-                    <p class="text-sm text-slate-600 mb-4">09:00 Cable car + Alpyland guided tour (coaster 5x). Afternoon swim at Lido Blu.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Dinner</p>
-                        <p class="text-sm font-bold text-slate-800">Lakefront Pasta</p>
-                    </div>
-                </div>
-                <div class="glass-card p-5 border-l-4 border-l-indigo-500">
-                    <p class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Thu, Jun 12 • Day 9</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Milan Boutique Trip</h4>
-                    <p class="text-sm text-slate-600 mb-4">08:00 Train to Milano. 09:30-14:00 Boutique shopping in Brera district (Emily Levine, Vibi Venezia). Return by 14:30.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Lunch</p>
-                        <p class="text-sm font-bold text-slate-800">Brera District Veg Spot</p>
-                    </div>
-                </div>
+                <div class="glass-card p-5 border-l-4 border-l-indigo-500"><p class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Mon, Jun 9 • Day 6</p><h4 class="text-lg font-bold text-slate-800 mb-2">Train via Rome</h4><p class="text-sm text-slate-600">Train to Rome. Luggage storage & 3h taxi tour (Colosseum/Vatican). 15:50 Frecciarossa to Milan. Arrive Stresa ~20:36.</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-indigo-500"><p class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Tue, Jun 10 • Day 7</p><h4 class="text-lg font-bold text-slate-800 mb-2">Private Boat</h4><p class="text-sm text-slate-600">10:00-15:00 Private hop-on boat to Isola Bella, Pescatori, and Madre. See the white peacocks.</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-indigo-500"><p class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Wed, Jun 11 • Day 8</p><h4 class="text-lg font-bold text-slate-800 mb-2">Mottarone Guided</h4><p class="text-sm text-slate-600">09:00 Cable car + Alpyland guided tour (coaster 5x). Afternoon swim at Lido Blu.</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-indigo-500"><p class="text-xs font-bold text-indigo-600 uppercase tracking-wide">Thu, Jun 12 • Day 9</p><h4 class="text-lg font-bold text-slate-800 mb-2">Milan Boutique Trip</h4><p class="text-sm text-slate-600">08:00 Train to Milano. Boutique shopping in Brera district. Return to Stresa by 14:30.</p></div>
             </div>
         </section>
-
 
         <section id="thun" class="tab-content glass-panel p-6 md:p-10">
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-slate-800 mb-2">The Swiss Hub: Thun</h2>
-                <p class="text-slate-600 font-medium">June 13 – June 16 • 4 Nights</p>
-            </div>
-
+            <div class="mb-8"><h2 class="text-3xl font-bold text-slate-800 mb-2">The Swiss Hub: Thun</h2><p class="text-slate-600 font-medium">June 13 – June 16 • 4 Nights</p></div>
             <div class="glass-card p-6 flex flex-col md:flex-row gap-6 mb-10 items-center">
-                <div class="md:w-1/3 w-full">
-                    <span class="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-xs font-bold uppercase tracking-wide mb-3">Basecamp 3</span>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-1">Pestalozzistrasse Apt</h3>
-                    <p class="text-slate-500 text-sm font-medium mb-4">3 Bedrooms • 1.5 Baths • Mountain Views</p>
-                    <a href="https://www.airbnb.com/rooms/943186688626931849" target="_blank" class="inline-block w-full text-center bg-rose-600/90 backdrop-blur-sm hover:bg-rose-700 text-white font-semibold py-2.5 px-4 rounded-xl transition shadow-md">View Airbnb ↗</a>
-                </div>
-                <div class="md:w-2/3 w-full pl-0 md:pl-6 md:border-l border-white/50">
-                    <p class="text-slate-700 text-sm leading-relaxed mb-4">Recently renovated, sunny apartment just 2-5 minutes by foot from Thun city center. Magnificent mountain views from the balconies with morning and evening sun. Easy walk to the train station.</p>
-                    <div class="flex gap-4">
-                        <div class="bg-white/50 px-4 py-2 rounded-lg text-xs font-semibold text-slate-700">🎫 Swiss Half Fare</div>
-                        <div class="bg-white/50 px-4 py-2 rounded-lg text-xs font-semibold text-slate-700">🚌 Free Local Bus</div>
+                <div class="md:w-1/3 w-full"><span class="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-xs font-bold uppercase tracking-wide mb-3">Basecamp 3</span><h3 class="text-2xl font-bold text-slate-800 mb-1">Pestalozzistrasse Apt</h3><p class="text-slate-500 text-sm font-medium mb-4">3 Bedrooms • Mountain Views</p><a href="https://www.airbnb.com/rooms/943186688626931849" target="_blank" class="inline-block w-full text-center bg-rose-600/90 hover:bg-rose-700 text-white font-semibold py-2.5 px-4 rounded-xl transition shadow-md">View Airbnb ↗</a></div>
+                <div class="md:w-2/3 w-full pl-0 md:pl-6 md:border-l border-white/50"><p class="text-slate-700 text-sm leading-relaxed mb-4">Recently renovated, sunny apartment just 2-5 minutes by foot from Thun city center. Magnificent mountain views from the balconies with morning and evening sun.</p></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card p-5 border-l-4 border-l-rose-500"><p class="text-xs font-bold text-rose-600 uppercase tracking-wide">Fri, Jun 13 • Day 10</p><h4 class="text-lg font-bold text-slate-800 mb-2">Scenic Train</h4><p class="text-sm text-slate-600">Train Stresa &rarr; Domodossola. Taxi bridge to Iselle. Train Iselle &rarr; Thun. Afternoon at Mühleplatz.</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-rose-500"><p class="text-xs font-bold text-rose-600 uppercase tracking-wide">Sat, Jun 14 • Day 11</p><h4 class="text-lg font-bold text-slate-800 mb-2">Grindelwald</h4><p class="text-sm text-slate-600">08:30 Train to Grindelwald. First gondola, Cliff Walk, Bachalpsee hike. Männlichen playground.</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-rose-500"><p class="text-xs font-bold text-rose-600 uppercase tracking-wide">Sun, Jun 15 • Day 12</p><h4 class="text-lg font-bold text-slate-800 mb-2">Oeschinensee</h4><p class="text-sm text-slate-600">09:00 Train to Kandersteg. Gondola up to the mountain coaster and the stunning blue alpine lake.</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-rose-500"><p class="text-xs font-bold text-rose-600 uppercase tracking-wide">Mon, Jun 16 • Day 13</p><h4 class="text-lg font-bold text-slate-800 mb-2">Lauterbrunnen</h4><p class="text-sm text-slate-600">09:00 Train to Lauterbrunnen. Valley falls, Trümmelbach cave falls, and a Harder Kulm sunset.</p></div>
+            </div>
+        </section>
+
+        <section id="geneva" class="tab-content glass-panel p-6 md:p-10">
+            <div class="mb-8"><h2 class="text-3xl font-bold text-slate-800 mb-2">The Departure: Geneva</h2><p class="text-slate-600 font-medium">June 17 – June 18 • 1 Night</p></div>
+            <div class="glass-card p-6 flex flex-col md:flex-row gap-6 mb-10 items-center">
+                <div class="md:w-1/3 w-full"><span class="inline-block px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-bold uppercase tracking-wide mb-3">Basecamp 4</span><h3 class="text-2xl font-bold text-slate-800 mb-1">Geneva Center Apt</h3><p class="text-slate-500 text-sm font-medium mb-4">3 Bedrooms • Full AC</p><a href="https://www.airbnb.com/rooms/1933255" target="_blank" class="inline-block w-full text-center bg-teal-600/90 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-xl transition shadow-md">View Airbnb ↗</a></div>
+                <div class="md:w-2/3 w-full pl-0 md:pl-6 md:border-l border-white/50"><p class="text-slate-700 text-sm leading-relaxed mb-4">Located between the old town and the lake in the Hotel Central building. Offers full AC and easy check-in via the hotel reception.</p></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card p-5 border-l-4 border-l-teal-500"><p class="text-xs font-bold text-teal-600 uppercase tracking-wide">Tue, Jun 17 • Day 14</p><h4 class="text-lg font-bold text-slate-800 mb-2">To the City</h4><p class="text-sm text-slate-600">11:04 Train from Thun, arriving Geneva 13:35. Check-in, walk to the Jet d'Eau, and explore the Old Town.</p></div>
+                <div class="glass-card p-5 border-l-4 border-l-teal-500"><p class="text-xs font-bold text-teal-600 uppercase tracking-wide">Wed, Jun 18 • Day 15</p><h4 class="text-lg font-bold text-slate-800 mb-2">Fly Home</h4><p class="text-sm text-slate-600">09:00 Train/taxi to Geneva Airport (GVA). 11:00 AM Departure flight.</p></div>
+            </div>
+        </section>
+
+        <section id="restaurants" class="tab-content glass-panel p-6 md:p-10">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">Vegetarian Dining Guide</h2>
+                <p class="text-slate-600 font-medium">Curated options emphasizing fresh vegetables, egg-free, and plant-based specialties.</p>
+            </div>
+
+            <div class="flex space-x-2 overflow-x-auto mb-8 pb-2 border-b border-white/50">
+                <button class="sub-tab-btn tab-active px-4 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-white/50" onclick="openRestTab('rest-gaeta', this)">Gaeta</button>
+                <button class="sub-tab-btn px-4 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-white/50" onclick="openRestTab('rest-stresa', this)">Stresa</button>
+                <button class="sub-tab-btn px-4 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-white/50" onclick="openRestTab('rest-thun', this)">Thun</button>
+                <button class="sub-tab-btn px-4 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-white/50" onclick="openRestTab('rest-geneva', this)">Geneva</button>
+                <button class="sub-tab-btn px-4 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-white/50" onclick="openRestTab('rest-enroute', this)">En-Route (Rome/Milan)</button>
+            </div>
+
+            <div id="rest-gaeta" class="sub-tab-content active">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-blue-900 border-b border-white pb-2 mb-4">🌅 Breakfast</h4>
+                        <ul class="space-y-4">
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-blue-600">Bar Bazzanti</a><p class="text-xs text-slate-600">Corso Cavour 100. Classic espresso and Italian pastries (cornetti).</p></li>
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-blue-600">Pasticceria Stenta</a><p class="text-xs text-slate-600">Via Indipendenza. Historic bakery perfect for grabbing quick bites before a hike.</p></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-blue-900 border-b border-white pb-2 mb-4">☀️ Lunch</h4>
+                        <ul class="space-y-4">
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-blue-600">Tiella Kiosks (Serapo)</a><p class="text-xs text-slate-600">Grab the "Scarola e Olive" (Endive and Olive) Tiella pie. Naturally vegan and a local staple.</p></li>
+                            <li><a href="https://www.tripadvisor.com/Restaurant_Review-g187790-d6403724-Reviews-Magie_dei_Sapori_Ristorante-Gaeta_Province_of_Latina_Lazio.html" target="_blank" class="font-bold text-slate-800 hover:text-blue-600">Magie dei Sapori ↗</a><p class="text-xs text-slate-600">Via Indipendenza. Request traditional Cacio e Pepe or Pasta alla Norma (eggplant/tomato).</p></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-blue-900 border-b border-white pb-2 mb-4">🌙 Dinner</h4>
+                        <ul class="space-y-4">
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-blue-600">Pizzeria del Porto</a><p class="text-xs text-slate-600">Via Indipendenza 64. Fast, loud, authentic Neapolitan pizza. Fantastic Margherita and Marinara.</p></li>
+                            <li><a href="https://www.facebook.com/radiobottegagaeta/" target="_blank" class="font-bold text-slate-800 hover:text-blue-600">Radio Bottega ↗</a><p class="text-xs text-slate-600">Piazza Traniello. Hip spot with incredible cheese/vegetable boards and robust salads.</p></li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <h3 class="text-xl font-bold text-slate-800 mb-6 border-b border-white/40 pb-2">Daily Itinerary</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass-card p-5 border-l-4 border-l-rose-500">
-                    <p class="text-xs font-bold text-rose-600 uppercase tracking-wide">Fri, Jun 13 • Day 10</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Scenic Train</h4>
-                    <p class="text-sm text-slate-600 mb-4">Train Stresa &rarr; Domodossola (09:37). Taxi bridge to Iselle. Train Iselle &rarr; Thun (Arr 13:58). Afternoon at Mühleplatz.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Dinner</p>
-                        <p class="text-sm font-bold text-slate-800">Ristorante La Pergola <span class="font-normal text-slate-600">(Pasta)</span></p>
+            <div id="rest-stresa" class="sub-tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-indigo-900 border-b border-white pb-2 mb-4">🌅 Breakfast</h4>
+                        <ul class="space-y-4">
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-indigo-600">Caffè Torino</a><p class="text-xs text-slate-600">Piazza Cadorna 39. Old-world cafe on the main square. Great fresh juices and coffee.</p></li>
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-indigo-600">Gigi Bar</a><p class="text-xs text-slate-600">Corso Italia 30. Lakefront views, famous for their "Margheritine di Stresa" cookies.</p></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-indigo-900 border-b border-white pb-2 mb-4">☀️ Lunch</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://www.ristoranteverbano.com/" target="_blank" class="font-bold text-slate-800 hover:text-indigo-600">Ristorante Verbano ↗</a><p class="text-xs text-slate-600">Isola Pescatori. Best terrace on the lake. They specialize in local Risotto (egg-free/fish-free available).</p></li>
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-indigo-600">Mamma Mia</a><p class="text-xs text-slate-600">Via Principe Tomaso 11. Very easy, reliable spot for vegetarian pizzas and salads with kids.</p></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-indigo-900 border-b border-white pb-2 mb-4">🌙 Dinner</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://www.lostornellostresa.com/" target="_blank" class="font-bold text-slate-800 hover:text-indigo-600">Lo Stornello ↗</a><p class="text-xs text-slate-600">Via Cavour 35. High-end traditional. They offer a dedicated vegetarian menu featuring Piedmontese veggies.</p></li>
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-indigo-600">Osteria Degli Amici</a><p class="text-xs text-slate-600">Via Anna Maria Bolongaro 33. Cozy setting with great truffle pastas and minestrone.</p></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="glass-card p-5 border-l-4 border-l-rose-500">
-                    <p class="text-xs font-bold text-rose-600 uppercase tracking-wide">Sat, Jun 14 • Day 11</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Grindelwald</h4>
-                    <p class="text-sm text-slate-600 mb-4">08:30 Train to Grindelwald. First gondola, Cliff Walk, Bachalpsee hike. Männlichen playground in the afternoon.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Dinner</p>
-                        <p class="text-sm font-bold text-slate-800">Thun Veg Spot</p>
+            </div>
+
+            <div id="rest-thun" class="sub-tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-rose-900 border-b border-white pb-2 mb-4">🌅 Breakfast</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://manis.ch/" target="_blank" class="font-bold text-slate-800 hover:text-rose-600">Mani's Coffee & Bagels ↗</a><p class="text-xs text-slate-600">Panoramastrasse 1. Fantastic vegan/veg bagels, excellent coffee, very close to your Airbnb.</p></li>
+                            <li><a href="https://aess-bar.ch/" target="_blank" class="font-bold text-slate-800 hover:text-rose-600">Äss-Bar ↗</a><p class="text-xs text-slate-600">Bälliz 64. Sustainable bakery concept selling yesterday's pastries at a massive discount.</p></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-rose-900 border-b border-white pb-2 mb-4">☀️ Lunch</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://hitzberger.com/" target="_blank" class="font-bold text-slate-800 hover:text-rose-600">Hitzberger (Station) ↗</a><p class="text-xs text-slate-600">Right at Thun train station. Fast, healthy vegetarian wraps and quinoa bowls for hike days.</p></li>
+                            <li><a href="https://airtime.ch/" target="_blank" class="font-bold text-slate-800 hover:text-rose-600">Airtime Café (Lauterbrunnen) ↗</a><p class="text-xs text-slate-600">Fuhren 442. For your waterfall day: the absolute best vegetarian sandwiches and soups in the Alps.</p></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-rose-900 border-b border-white pb-2 mb-4">🌙 Dinner</h4>
+                        <ul class="space-y-4">
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-rose-600">Ristorante La Pergola</a><p class="text-xs text-slate-600">Obere Hauptgasse 25. Excellent Italian in Thun with reliable, fresh vegetarian pasta options.</p></li>
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-rose-600">Chillounge</a><p class="text-xs text-slate-600">Mühleplatz. Great riverside vibe offering Mexican/international veggie bowls and nachos.</p></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="glass-card p-5 border-l-4 border-l-rose-500">
-                    <p class="text-xs font-bold text-rose-600 uppercase tracking-wide">Sun, Jun 15 • Day 12</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Oeschinensee</h4>
-                    <p class="text-sm text-slate-600 mb-4">09:00 Train to Kandersteg. Gondola up to the mountain coaster and the stunning blue alpine lake.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Dinner</p>
-                        <p class="text-sm font-bold text-slate-800">Lake Veg Grill / BBQ</p>
+            </div>
+
+            <div id="rest-geneva" class="sub-tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-teal-900 border-b border-white pb-2 mb-4">🌅 Breakfast</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://oubienencore.ch/" target="_blank" class="font-bold text-slate-800 hover:text-teal-600">Ou Bien Encore ↗</a><p class="text-xs text-slate-600">Rue des Bains 61. A fully vegetarian/vegan haven. Incredible tofu-based dishes, acai, and plant-based treats.</p></li>
+                            <li><a href="https://www.borealcoffee.ch/" target="_blank" class="font-bold text-slate-800 hover:text-teal-600">Boréal Coffee Shop ↗</a><p class="text-xs text-slate-600">Rue du Stand 60. Artisanal coffee and fresh, simple pastries.</p></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-teal-900 border-b border-white pb-2 mb-4">☀️ Lunch</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://alive.swiss/" target="_blank" class="font-bold text-slate-800 hover:text-teal-600">Alive ↗</a><p class="text-xs text-slate-600">Rue des Barques 2. 100% Vegan superfood cafe. Beautiful, healthy, and high-energy food.</p></li>
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-teal-600">Manora (Manor Dept. Store)</a><p class="text-xs text-slate-600">Rue de Cornavin 6. Top floor buffet with incredible fresh vegetable stations, customized stir-fry, and panoramic views.</p></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-5">
+                        <h4 class="text-xl font-bold text-teal-900 border-b border-white pb-2 mb-4">🌙 Dinner</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://www.lesarmures.ch/en/restaurant/" target="_blank" class="font-bold text-slate-800 hover:text-teal-600">Les Armures ↗</a><p class="text-xs text-slate-600">Rue du Puits-Saint-Pierre 1. The most famous spot in the Old Town for traditional Swiss Cheese Fondue (naturally veg).</p></li>
+                            <li><a href="https://enfaim.ch/" target="_blank" class="font-bold text-slate-800 hover:text-teal-600">En Faim ↗</a><p class="text-xs text-slate-600">Rue des Eaux-Vives. Small, cozy spot specializing in creative vegetarian and vegan gastronomy.</p></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="glass-card p-5 border-l-4 border-l-rose-500">
-                    <p class="text-xs font-bold text-rose-600 uppercase tracking-wide">Mon, Jun 16 • Day 13</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Lauterbrunnen</h4>
-                    <p class="text-sm text-slate-600 mb-4">09:00 Train to Lauterbrunnen. Valley falls, Trümmelbach cave falls, and a Harder Kulm sunset trip in Interlaken.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Dinner</p>
-                        <p class="text-sm font-bold text-slate-800">Interlaken Veg</p>
+            </div>
+
+            <div id="rest-enroute" class="sub-tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass-card p-5 border-t-4 border-t-yellow-500">
+                        <h4 class="text-xl font-bold text-slate-800 border-b border-white pb-2 mb-4">🏛️ Rome (Layover)</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://rifugioromano.com/" target="_blank" class="font-bold text-slate-800 hover:text-yellow-600">Rifugio Romano (Lunch) ↗</a><p class="text-xs text-slate-600">Via del Castro Pretorio 54 (Near Termini Station). <strong>A MUST VISIT.</strong> They specialize in fully Vegan versions of classic Roman pasta (Vegan Carbonara, Cacio e Pepe). You must book in advance.</p></li>
+                            <li><a href="#" class="font-bold text-slate-800 hover:text-yellow-600">Mercato Centrale (Termini)</a><p class="text-xs text-slate-600">Inside the station. High-end food hall with tons of artisan vegetarian pizza, pasta, and veggie options if you are short on time.</p></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-5 border-t-4 border-t-purple-500">
+                        <h4 class="text-xl font-bold text-slate-800 border-b border-white pb-2 mb-4">👗 Milan (Day Trip)</h4>
+                        <ul class="space-y-4">
+                            <li><a href="https://www.flowerburger.it/" target="_blank" class="font-bold text-slate-800 hover:text-purple-600">Flower Burger (Lunch) ↗</a><p class="text-xs text-slate-600">Viale Vittorio Veneto 10. Incredibly fun, 100% vegan colorful burgers (pink/purple buns) that the 4 boys will absolutely love while shopping.</p></li>
+                            <li><a href="https://obica.com/" target="_blank" class="font-bold text-slate-800 hover:text-purple-600">Obicà Mozzarella Bar (Brera) ↗</a><p class="text-xs text-slate-600">Via Mercato 28. High-end vegetarian pizzas and tasting boards of Italy's best mozzarella.</p></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <section id="geneva" class="tab-content glass-panel p-6 md:p-10">
+        <section id="activities" class="tab-content glass-panel p-6 md:p-10">
             <div class="mb-8">
-                <h2 class="text-3xl font-bold text-slate-800 mb-2">The Departure: Geneva</h2>
-                <p class="text-slate-600 font-medium">June 17 – June 18 • 1 Night</p>
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">Expanded Activities Guide</h2>
+                <p class="text-slate-600 font-medium">Extra options, side quests, and en-route highlights with pricing for the family.</p>
             </div>
 
-            <div class="glass-card p-6 flex flex-col md:flex-row gap-6 mb-10 items-center">
-                <div class="md:w-1/3 w-full">
-                    <span class="inline-block px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-bold uppercase tracking-wide mb-3">Basecamp 4</span>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-1">Geneva Center Apt</h3>
-                    <p class="text-slate-500 text-sm font-medium mb-4">3 Bedrooms • 2 Baths • Full AC</p>
-                    <a href="https://www.airbnb.com/rooms/1933255" target="_blank" class="inline-block w-full text-center bg-teal-600/90 backdrop-blur-sm hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-xl transition shadow-md">View Airbnb ↗</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="glass-card p-5 border-t-4 border-t-blue-500">
+                    <h4 class="text-lg font-bold text-slate-800 mb-4">🏖️ Gaeta & Coast</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://www.polomusealelazio.beniculturali.it" target="_blank" class="font-bold text-blue-700 hover:underline">Villa of Tiberius (Sperlonga) ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">Explore the ancient Roman emperor's grotto and museum right on the beach.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">~ €5.00</span>
+                        </li>
+                        <li>
+                            <a href="#" class="font-bold text-blue-700 hover:underline">Sanctuary of Montagna Spaccata</a>
+                            <p class="text-xs text-slate-600 mt-1">Hike the "Split Mountain" and visit the Turk's Cave.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">Free / Donation</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="md:w-2/3 w-full pl-0 md:pl-6 md:border-l border-white/50">
-                    <p class="text-slate-700 text-sm leading-relaxed mb-4">Located between the old town and the lake in the Hotel Central building. Offers full AC (rare in Switzerland) and extremely easy check-in via the hotel reception.</p>
-                    <div class="flex gap-4">
-                        <div class="bg-white/50 px-4 py-2 rounded-lg text-xs font-semibold text-slate-700">✈️ Airport Direct</div>
-                        <div class="bg-white/50 px-4 py-2 rounded-lg text-xs font-semibold text-slate-700">🎟️ Free Transit Card</div>
-                    </div>
-                </div>
-            </div>
 
-            <h3 class="text-xl font-bold text-slate-800 mb-6 border-b border-white/40 pb-2">Daily Itinerary</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass-card p-5 border-l-4 border-l-teal-500">
-                    <p class="text-xs font-bold text-teal-600 uppercase tracking-wide">Tue, Jun 17 • Day 14</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">To the City</h4>
-                    <p class="text-sm text-slate-600 mb-4">11:04 Train from Thun, arriving Geneva 13:35. Check-in, walk to the Jet d'Eau, and explore the Old Town.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🍽️ Dinner</p>
-                        <p class="text-sm font-bold text-slate-800">Les Armures <span class="font-normal text-slate-600">(Veg Fondue)</span></p>
-                    </div>
+                <div class="glass-card p-5 border-t-4 border-t-yellow-500">
+                    <h4 class="text-lg font-bold text-slate-800 mb-4">🏛️ Rome (En-Route)</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://colosseo.it/en/" target="_blank" class="font-bold text-yellow-700 hover:underline">Colosseum Exterior / Forum ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">If you just take a taxi to the outside for photos, it is free. Inside requires advanced tickets.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">Inside: ~ €18.00</span>
+                        </li>
+                        <li>
+                            <a href="https://www.direzionemuseistataliroma.beniculturali.it/istituti/pantheon/" target="_blank" class="font-bold text-yellow-700 hover:underline">The Pantheon ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">The best preserved ancient Roman building. Quick to see during your 3-hour layover tour.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">~ €5.00</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="glass-card p-5 border-l-4 border-l-teal-500">
-                    <p class="text-xs font-bold text-teal-600 uppercase tracking-wide">Wed, Jun 18 • Day 15</p>
-                    <h4 class="text-lg font-bold text-slate-800 mb-2">Fly Home</h4>
-                    <p class="text-sm text-slate-600 mb-4">09:00 Train or taxi to Geneva Airport (GVA). Use your free transit cards. 11:00 AM Departure flight.</p>
-                    <div class="bg-white/60 p-3 rounded-lg">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">🛫 Safe Travels!</p>
-                    </div>
+
+                <div class="glass-card p-5 border-t-4 border-t-purple-500">
+                    <h4 class="text-lg font-bold text-slate-800 mb-4">👗 Milan (Day Trip)</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://www.museoscienza.org/en" target="_blank" class="font-bold text-purple-700 hover:underline">Leonardo da Vinci Science Museum ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">Incredible models of da Vinci's machines. A perfect diversion for the 4 boys while shopping.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">~ €10.00</span>
+                        </li>
+                        <li>
+                            <a href="https://www.duomomilano.it/en/" target="_blank" class="font-bold text-purple-700 hover:underline">Duomo Terraces ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">Take the elevator to the roof of the massive cathedral for incredible gothic architecture views.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">~ €16.00 - €25.00</span>
+                        </li>
+                    </ul>
                 </div>
+
+                <div class="glass-card p-5 border-t-4 border-t-indigo-500">
+                    <h4 class="text-lg font-bold text-slate-800 mb-4">🛥️ Stresa & Lakes</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://www.isoleborromee.it/en/parco-pallavicino/" target="_blank" class="font-bold text-indigo-700 hover:underline">Villa Pallavicino Park ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">A botanical garden combined with a free-roaming zoo (deer, llamas, birds). Great for kids.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">~ €13.00</span>
+                        </li>
+                        <li>
+                            <a href="https://www.isoleborromee.it/en/rocca-di-angera/" target="_blank" class="font-bold text-indigo-700 hover:underline">Rocca di Angera ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">Take a ferry across the lake to this imposing medieval castle housing a massive doll/toy museum.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">~ €14.00</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-5 border-t-4 border-t-rose-500">
+                    <h4 class="text-lg font-bold text-slate-800 mb-4">🏔️ Thun & Alps</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://www.beatushoehlen.swiss/" target="_blank" class="font-bold text-rose-700 hover:underline">St. Beatus Caves ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">Explore deep mountain caves featuring underground waterfalls. Good rainy day alternative.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">~ CHF 19.00</span>
+                        </li>
+                        <li>
+                            <a href="https://schlossthun.ch/" target="_blank" class="font-bold text-rose-700 hover:underline">Thun Castle ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">The iconic white castle overlooking your Airbnb. Features a historical museum inside.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">~ CHF 10.00 (Kids free w/ family)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-5 border-t-4 border-t-teal-500">
+                    <h4 class="text-lg font-bold text-slate-800 mb-4">✈️ Geneva</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://sciencegateway.cern/" target="_blank" class="font-bold text-teal-700 hover:underline">CERN Science Gateway ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">Brand new, highly interactive visitor center for the Large Hadron Collider particle physics lab.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-green-100 text-green-800 text-xs font-bold rounded">FREE</span>
+                        </li>
+                        <li>
+                            <a href="https://www.patek.com/en/company/patek-philippe-museum" target="_blank" class="font-bold text-teal-700 hover:underline">Patek Philippe Museum ↗</a>
+                            <p class="text-xs text-slate-600 mt-1">Five centuries of watchmaking history and mechanical automata.</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-white/60 text-xs font-semibold rounded">~ CHF 10.00</span>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </section>
 
@@ -343,25 +416,39 @@
     </footer>
 
     <script>
+        // Main Tabs Logic
         function openTab(tabName, clickedBtn) {
-            // Hide all tab contents
             var contents = document.getElementsByClassName("tab-content");
             for (var i = 0; i < contents.length; i++) {
                 contents[i].classList.remove("active");
             }
             
-            // Remove active class from all buttons
             var btns = document.getElementsByClassName("tab-btn");
             for (var i = 0; i < btns.length; i++) {
                 btns[i].classList.remove("tab-active");
             }
             
-            // Show current tab and add active class to button
             document.getElementById(tabName).classList.add("active");
             clickedBtn.classList.add("tab-active");
             
-            // Optional: Scroll to top of content smoothly if scrolled down
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Restaurant Sub-Tabs Logic
+        function openRestTab(tabName, clickedBtn) {
+            var contents = document.getElementsByClassName("sub-tab-content");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+            
+            var btns = document.getElementsByClassName("sub-tab-btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("tab-active");
+                btns[i].classList.remove("bg-white/50"); // reset tailwind hover state
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            clickedBtn.classList.add("tab-active");
         }
     </script>
 
